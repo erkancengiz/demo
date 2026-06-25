@@ -354,6 +354,56 @@ footer{background:#1a241e;color:rgba(241,236,225,.7);padding:48px 0}
   font-size:11.5px;color:rgba(241,236,225,.5);
 }
 
+/* ── Lightbox ───────────────────────────────────────────────────────────── */
+#lightbox{
+  position:fixed;inset:0;z-index:200;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s;
+}
+#lightbox.open{opacity:1;pointer-events:all}
+#lb-overlay{position:absolute;inset:0;background:rgba(13,20,16,.93);cursor:zoom-out}
+#lb-img-wrap{position:relative;z-index:1;display:flex;align-items:center;justify-content:center}
+#lb-img{
+  max-width:90vw;max-height:86vh;object-fit:contain;display:block;
+  border-radius:3px;box-shadow:0 28px 90px rgba(0,0,0,.75);
+  opacity:1;transform:scale(1);
+  transition:opacity .18s ease,transform .18s ease;
+}
+#lb-img.fading{opacity:0;transform:scale(.96)}
+#lb-close{
+  position:fixed;top:18px;right:22px;z-index:202;
+  width:44px;height:44px;border-radius:50%;border:1px solid rgba(241,236,225,.25);
+  background:rgba(241,236,225,.12);color:#f1ece1;font-size:20px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .2s;
+}
+#lb-close:hover{background:rgba(241,236,225,.26)}
+#lb-prev,#lb-next{
+  position:fixed;top:50%;transform:translateY(-50%);z-index:202;
+  width:50px;height:50px;border-radius:50%;border:1px solid rgba(241,236,225,.25);
+  background:rgba(241,236,225,.12);color:#f1ece1;font-size:22px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .2s,opacity .2s;
+}
+#lb-prev{left:18px}
+#lb-next{right:18px}
+#lb-prev:hover,#lb-next:hover{background:rgba(241,236,225,.26)}
+#lb-prev[disabled],#lb-next[disabled]{opacity:.25;cursor:default;pointer-events:none}
+#lb-counter{
+  position:fixed;top:22px;left:50%;transform:translateX(-50%);z-index:202;
+  color:rgba(241,236,225,.55);font-size:12px;letter-spacing:.12em;
+  font-family:'Manrope',sans-serif;
+}
+#lb-caption{
+  position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:202;
+  color:rgba(241,236,225,.8);font-size:13.5px;letter-spacing:.04em;
+  font-family:'Cormorant Garamond',serif;font-weight:500;
+  background:rgba(13,20,16,.55);backdrop-filter:blur(8px);
+  padding:8px 20px;border-radius:24px;white-space:nowrap;
+}
+.lb-trigger{cursor:zoom-in}
+
 /* ── WhatsApp ───────────────────────────────────────────────────────────── */
 #wa-btn{
   position:fixed;right:clamp(16px,3vw,28px);bottom:clamp(16px,3vw,28px);z-index:60;
@@ -538,6 +588,17 @@ footer{background:#1a241e;color:rgba(241,236,225,.7);padding:48px 0}
     <span id="footer-disclaimer"></span>
   </div>
 </footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Görsel">
+  <div id="lb-overlay" onclick="closeLightbox()"></div>
+  <button id="lb-close" onclick="closeLightbox()" aria-label="Kapat"><i class="ph ph-x"></i></button>
+  <button id="lb-prev" onclick="lbNav(-1)" aria-label="Önceki"><i class="ph ph-arrow-left"></i></button>
+  <div id="lb-img-wrap"><img id="lb-img" src="" alt=""></div>
+  <button id="lb-next" onclick="lbNav(1)" aria-label="Sonraki"><i class="ph ph-arrow-right"></i></button>
+  <div id="lb-counter"></div>
+  <div id="lb-caption"></div>
+</div>
 
 <!-- WHATSAPP -->
 <a id="wa-btn" href="https://wa.me/905550000000" target="_blank" rel="noopener" aria-label="WhatsApp">
@@ -893,7 +954,7 @@ function renderApartments(instant = false) {
   const el = document.getElementById('apt-scroller');
   el.innerHTML = APTS.map((a, i) => `
     <div class="apt-card" data-reveal>
-      <div class="apt-img">
+      <div class="apt-img lb-trigger" onclick="openAptLightbox(${i})">
         <img src="project/uploads/${APT_IMGS[a.type]}" alt="${esc(a.type)}" loading="lazy">
       </div>
       <div class="apt-body">
@@ -938,8 +999,9 @@ function setLocTab(tab) {
 
 function renderLifeGallery(instant = false) {
   const el = document.getElementById('life-gallery');
-  el.innerHTML = LIFE.map(item => `
-    <div class="life-item" style="grid-column:span ${item.c};grid-row:span ${item.r}" data-reveal>
+  el.innerHTML = LIFE.map((item, i) => `
+    <div class="life-item lb-trigger" style="grid-column:span ${item.c};grid-row:span ${item.r}" data-reveal
+         onclick="openGalleryLightbox(${i})">
       <img class="life-item-img" src="project/uploads/${item.img}" alt="${esc(item[lang])}" loading="lazy">
       <div class="life-overlay"></div>
       <span class="life-caption">${esc(item[lang])}</span>
@@ -1090,6 +1152,69 @@ function initReveal() {
   }, {threshold:0.12, rootMargin:'0px 0px -7% 0px'});
   observeAll(document.querySelectorAll('[data-reveal]'));
 }
+
+// ── Lightbox ──────────────────────────────────────────────────────────────
+
+let lbImages = [];
+let lbIndex = 0;
+
+function openLightbox(images, index) {
+  lbImages = images;
+  lbIndex = index;
+  _lbShow(false);
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function lbNav(dir) {
+  const next = lbIndex + dir;
+  if (next < 0 || next >= lbImages.length) return;
+  const imgEl = document.getElementById('lb-img');
+  imgEl.classList.add('fading');
+  setTimeout(() => {
+    lbIndex = next;
+    _lbShow(true);
+    imgEl.classList.remove('fading');
+  }, 180);
+}
+
+function _lbShow(skipFade) {
+  const item = lbImages[lbIndex];
+  const imgEl = document.getElementById('lb-img');
+  imgEl.src = item.src;
+  imgEl.alt = item.caption || '';
+  document.getElementById('lb-caption').textContent = item.caption || '';
+  document.getElementById('lb-counter').textContent =
+    lbImages.length > 1 ? `${lbIndex + 1} / ${lbImages.length}` : '';
+  document.getElementById('lb-prev').disabled = lbIndex === 0;
+  document.getElementById('lb-next').disabled = lbIndex === lbImages.length - 1;
+}
+
+function openGalleryLightbox(index) {
+  openLightbox(LIFE.map(item => ({
+    src: `project/uploads/${item.img}`,
+    caption: item[lang]
+  })), index);
+}
+
+function openAptLightbox(index) {
+  openLightbox(APTS.map(a => ({
+    src: `project/uploads/${APT_IMGS[a.type]}`,
+    caption: `${a.type} — ${a.size}`
+  })), index);
+}
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') lbNav(-1);
+  if (e.key === 'ArrowRight') lbNav(1);
+});
 
 // ── Init ──────────────────────────────────────────────────────────────────
 
