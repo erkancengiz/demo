@@ -49,6 +49,11 @@ body{margin:0;font-family:'Manrope',system-ui,sans-serif;background:#f1ece1;colo
 .nav-cta:hover{background:#a16f2c}
 .nav-cta:active{transform:scale(.97)}
 @media(max-width:920px){.nav-links{display:none!important}}
+@media(max-width:640px){
+  .logo-pendik{display:block;line-height:1}
+  .nav-logo-sub{display:none}
+  .nav-logo-name{font-size:21px}
+}
 
 /* ── Hero ───────────────────────────────────────────────────────────────── */
 #hero{position:relative;min-height:100dvh;display:flex;align-items:flex-end;overflow:hidden}
@@ -482,7 +487,7 @@ footer{background:#1a241e;color:rgba(241,236,225,.7);padding:48px 0}
 <!-- NAV -->
 <nav id="nav">
   <div class="nav-logo" onclick="scrollToTop()">
-    <span class="nav-logo-name">Referans Pendik</span>
+    <span class="nav-logo-name">Referans <span class="logo-pendik">Pendik</span></span>
     <span class="nav-logo-sub">Pendik · İstanbul</span>
   </div>
   <div class="nav-links" id="nav-links"></div>
