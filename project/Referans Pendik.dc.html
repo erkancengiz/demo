@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f1ece1}
+::selection{background:#c0883c;color:#fff}
+@keyframes rpBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+.rp-scroller::-webkit-scrollbar{height:6px}
+.rp-scroller::-webkit-scrollbar-track{background:transparent}
+.rp-scroller::-webkit-scrollbar-thumb{background:rgba(43,58,49,.22);border-radius:3px}
+@media(max-width:920px){.nav-links{display:none!important}}
+@media(max-width:760px){.rp-gallery{grid-template-columns:repeat(2,1fr)!important}.rp-gallery>div{grid-column:auto!important;grid-row:auto!important;min-height:220px}}
+@media(max-width:480px){.rp-gallery{grid-template-columns:1fr!important}}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="font-family:'Manrope',system-ui,sans-serif;color:#2b3a31;background:#f1ece1;overflow-x:hidden;position:relative">
+
+<x-import component-from-global-scope="image-slot" from="./image-slot.js" hint-size="1px,1px" style="position:absolute;width:0;height:0;overflow:hidden;opacity:0;pointer-events:none"></x-import>
+
+<nav ref="{{ navRef }}" class="rp-nav" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,48px);color:#f1ece1;background:transparent;transition:background .45s ease,color .45s ease,box-shadow .45s ease,padding .45s ease,backdrop-filter .45s ease">
+  <div onClick="{{ toTop }}" style="display:flex;flex-direction:column;line-height:1;cursor:pointer">
+    <span style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600;letter-spacing:.03em">Referans Pendik</span>
+    <span style="font-size:9px;letter-spacing:.42em;text-transform:uppercase;opacity:.72;margin-top:5px">Pendik · İstanbul</span>
+  </div>
+  <div class="nav-links" style="display:flex;gap:clamp(20px,2.6vw,38px);font-size:13px;font-weight:500;letter-spacing:.015em">
+    <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="5">
+      <a onClick="{{ link.onClick }}" style="cursor:pointer;color:inherit;text-decoration:none;opacity:.92">{{ link.label }}</a>
+    </sc-for>
+  </div>
+  <div style="display:flex;align-items:center;gap:clamp(12px,2vw,22px)">
+    <div style="display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;letter-spacing:.08em">
+      <span onClick="{{ setTr }}" style="cursor:pointer;opacity:{{ trOpacity }}">TR</span>
+      <span style="opacity:.4">/</span>
+      <span onClick="{{ setEn }}" style="cursor:pointer;opacity:{{ enOpacity }}">EN</span>
+    </div>
+    <button onClick="{{ scrollToForm }}" style="font-family:'Manrope',sans-serif;cursor:pointer;border:none;background:#c0883c;color:#fff;font-size:13px;font-weight:600;letter-spacing:.04em;padding:11px 22px;border-radius:2px;transition:background .3s,transform .2s" style-hover="background:#a16f2c" style-active="transform:scale(.97)">{{ t.nav.cta }}</button>
+  </div>
+</nav>
+
+<section style="position:relative;min-height:100dvh;display:flex;align-items:flex-end;overflow:hidden">
+  <div ref="{{ heroBgRef }}" style="position:absolute;left:0;right:0;top:-8%;height:118%;will-change:transform">
+    <image-slot id="hero-aerial" fit="cover" shape="rect" placeholder="Havadan proje görseli — sürükleyip bırakın" style="width:100%;height:100%;display:block"></image-slot>
+  </div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(31,43,36,.55) 0%,rgba(31,43,36,.12) 32%,rgba(31,43,36,.18) 58%,rgba(31,43,36,.86) 100%);pointer-events:none"></div>
+  <div style="position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,48px) clamp(70px,11vh,120px)">
+    <div data-reveal style="max-width:780px;opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)">
+      <div style="display:flex;align-items:center;gap:13px;margin-bottom:26px">
+        <span style="width:36px;height:1px;background:#c0883c;display:block"></span>
+        <span style="letter-spacing:.34em;font-size:12px;text-transform:uppercase;color:#e8c89a;font-weight:600">{{ t.hero.eyebrow }}</span>
+      </div>
+      <h1 style="font-family:'Cormorant Garamond',serif;color:#f6f1e7;font-weight:600;font-size:clamp(44px,7.2vw,98px);line-height:.98;letter-spacing:-.01em;margin:0 0 28px">
+        <span style="display:block">{{ t.hero.line1 }}</span>
+        <span style="display:block;font-style:italic;font-weight:500;color:#ecdcc2">{{ t.hero.line2 }}</span>
+      </h1>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(26px,4vw,60px);margin-bottom:38px">
+        <sc-for list="{{ t.hero.stats }}" as="st" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.4vw,44px);font-weight:600;color:#e8c89a;line-height:1">{{ st.num }}</span>
+            <span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(246,241,231,.78);font-weight:600">{{ st.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:14px">
+        <button onClick="{{ scrollToForm }}" style="font-family:'Manrope',sans-serif;cursor:pointer;border:none;background:#c0883c;color:#fff;font-size:14px;font-weight:600;letter-spacing:.03em;padding:16px 32px;border-radius:2px;display:flex;align-items:center;gap:10px;transition:background .3s,transform .2s" style-hover="background:#a16f2c" style-active="transform:scale(.98)">{{ t.hero.cta }} <i class="ph ph-arrow-right"></i></button>
+        <button onClick="{{ exploreCta }}" style="font-family:'Manrope',sans-serif;cursor:pointer;background:transparent;color:#f6f1e7;border:1px solid rgba(246,241,231,.5);font-size:14px;font-weight:600;letter-spacing:.03em;padding:16px 30px;border-radius:2px;transition:background .3s,border-color .3s" style-hover="background:rgba(246,241,231,.12);border-color:rgba(246,241,231,.8)">{{ t.hero.cta2 }}</button>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(246,241,231,.7)">
+    <span style="font-size:10px;letter-spacing:.28em;text-transform:uppercase">{{ t.hero.scroll }}</span>
+    <i class="ph ph-arrow-down" style="font-size:18px;animation:rpBounce 1.9s ease-in-out infinite"></i>
+  </div>
+</section>
+
+<section id="highlights" style="background:#f1ece1;padding:clamp(80px,12vh,140px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,48px)">
+    <div data-reveal style="max-width:680px;margin-bottom:clamp(48px,7vh,80px);opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+        <span style="width:34px;height:1px;background:#c0883c;display:block"></span>
+        <span style="letter-spacing:.3em;font-size:11.5px;text-transform:uppercase;color:#a16f2c;font-weight:600">{{ t.hl.eyebrow }}</span>
+      </div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(34px,4.6vw,60px);line-height:1.02;letter-spacing:-.01em;margin:0 0 18px;color:#2b3a31">{{ t.hl.title }}</h2>
+      <p style="margin:0;font-size:16px;line-height:1.65;color:#5d6b60;max-width:60ch">{{ t.hl.sub }}</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:clamp(18px,2.5vw,32px)">
+      <sc-for list="{{ t.hl.cards }}" as="card" hint-placeholder-count="3">
+        <div data-reveal style="background:#faf6ee;border:1px solid rgba(43,58,49,.1);border-radius:4px;padding:clamp(30px,3vw,44px) clamp(26px,2.6vw,36px);display:flex;flex-direction:column;gap:18px;opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)">
+          <i class="ph-light {{ card.icon }}" style="font-size:46px;color:#c0883c"></i>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:28px;margin:0;color:#2b3a31">{{ card.title }}</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.6;color:#5d6b60">{{ card.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="apartments" style="background:#e7dfce;padding:clamp(80px,12vh,140px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,48px)">
+    <div data-reveal style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(40px,6vh,64px);opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)">
+      <div style="max-width:620px">
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(34px,4.6vw,60px);line-height:1.02;letter-spacing:-.01em;margin:0 0 16px;color:#2b3a31">{{ t.apt.title }}</h2>
+        <p style="margin:0;font-size:16px;line-height:1.65;color:#5d6b60;max-width:54ch">{{ t.apt.sub }}</p>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button onClick="{{ aptPrev }}" aria-label="prev" style="cursor:pointer;width:50px;height:50px;border-radius:50%;border:1px solid rgba(43,58,49,.28);background:transparent;color:#2b3a31;display:flex;align-items:center;justify-content:center;font-size:18px;transition:background .3s,color .3s" style-hover="background:#2b3a31;color:#f1ece1"><i class="ph ph-arrow-left"></i></button>
+        <button onClick="{{ aptNext }}" aria-label="next" style="cursor:pointer;width:50px;height:50px;border-radius:50%;border:1px solid rgba(43,58,49,.28);background:transparent;color:#2b3a31;display:flex;align-items:center;justify-content:center;font-size:18px;transition:background .3s,color .3s" style-hover="background:#2b3a31;color:#f1ece1"><i class="ph ph-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+  <div ref="{{ aptScrollerRef }}" class="rp-scroller" style="display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px clamp(20px,5vw,48px) 26px;max-width:1280px;margin:0 auto">
+    <sc-for list="{{ apartments }}" as="apt" hint-placeholder-count="5">
+      <div data-reveal style="flex:0 0 auto;width:300px;scroll-snap-align:start;background:#faf6ee;border:1px solid rgba(43,58,49,.1);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)">
+        <div style="background:#fff;height:228px;border-bottom:1px solid rgba(43,58,49,.08)">
+          <image-slot id="{{ apt.slot }}" fit="contain" shape="rect" placeholder="Kat Planı" style="width:100%;height:100%;display:block"></image-slot>
+        </div>
+        <div style="padding:24px 22px 26px;display:flex;flex-direction:column;gap:11px;flex:1">
+          <div style="display:flex;align-items:baseline;justify-content:space-between">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#2b3a31;line-height:1">{{ apt.type }}</span>
+            <span style="font-size:13px;letter-spacing:.03em;color:#a16f2c;font-weight:700">{{ apt.size }}</span>
+          </div>
+          <p style="margin:0;font-size:13.5px;line-height:1.55;color:#5d6b60;flex:1">{{ apt.desc }}</p>
+          <button onClick="{{ scrollToForm }}" style="margin-top:6px;font-family:'Manrope',sans-serif;cursor:pointer;background:transparent;border:1px solid rgba(43,58,49,.25);color:#2b3a31;font-size:13px;font-weight:600;letter-spacing:.02em;padding:12px 16px;border-radius:2px;display:flex;align-items:center;justify-content:space-between;transition:background .3s,color .3s,border-color .3s" style-hover="background:#2b3a31;color:#f1ece1;border-color:#2b3a31">{{ t.apt.cta }} <i class="ph ph-arrow-right"></i></button>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="max-width:1280px;margin:0 auto;padding:14px clamp(20px,5vw,48px) 0"><span style="font-size:11.5px;color:#8a9388;letter-spacing:.02em">{{ t.apt.note }}</span></div>
+</section>
+
+<section id="location" style="background:#2b3a31;color:#f1ece1;padding:clamp(80px,12vh,140px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,48px)">
+    <div data-reveal style="max-width:680px;margin-bottom:clamp(40px,6vh,64px);opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(34px,4.6vw,60px);line-height:1.02;letter-spacing:-.01em;margin:0 0 16px;color:#f6f1e7">{{ t.loc.title }}</h2>
+      <p style="margin:0;font-size:16px;line-height:1.65;color:rgba(241,236,225,.72);max-width:58ch">{{ t.loc.sub }}</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:clamp(28px,4vw,56px);align-items:start">
+      <div data-reveal style="position:relative;border-radius:4px;overflow:hidden;min-height:420px;border:1px solid rgba(241,236,225,.16);opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)">
+        <image-slot id="map" fit="cover" shape="rect" placeholder="Konum haritası görseli" style="width:100%;height:100%;min-height:420px;display:block"></image-slot>
+        <div style="position:absolute;left:18px;bottom:18px;background:rgba(43,58,49,.82);backdrop-filter:blur(6px);padding:11px 16px;border-radius:2px;display:flex;align-items:center;gap:9px;pointer-events:none">
+          <i class="ph ph-map-pin" style="font-size:17px;color:#e8c89a"></i>
+          <span style="font-size:12.5px;letter-spacing:.04em;font-weight:600">{{ t.loc.mapNote }}</span>
+        </div>
+      </div>
+      <div data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)">
+        <div style="display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px">
+          <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="4">
+            <button onClick="{{ tab.onClick }}" style="{{ tab.btnStyle }}">{{ tab.label }}</button>
+          </sc-for>
+        </div>
+        <div>
+          <sc-for list="{{ locItems }}" as="row" hint-placeholder-count="6">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 2px;border-bottom:1px solid rgba(241,236,225,.13)">
+              <span style="font-size:14.5px;color:#f1ece1;letter-spacing:.01em">{{ row.name }}</span>
+              <span style="font-size:13px;font-weight:600;letter-spacing:.04em;color:#e8c89a;white-space:nowrap">{{ row.dist }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="lifestyle" style="background:#f1ece1;padding:clamp(80px,12vh,140px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,48px)">
+    <div data-reveal style="max-width:680px;margin-bottom:clamp(40px,6vh,64px);opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(34px,4.6vw,60px);line-height:1.02;letter-spacing:-.01em;margin:0 0 16px;color:#2b3a31">{{ t.life.title }}</h2>
+      <p style="margin:0;font-size:16px;line-height:1.65;color:#5d6b60;max-width:58ch">{{ t.life.sub }}</p>
+    </div>
+    <div class="rp-gallery" style="display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;grid-auto-flow:row dense;gap:14px">
+      <sc-for list="{{ lifeItems }}" as="item" hint-placeholder-count="6">
+        <div data-reveal style="{{ item.gridStyle }}">
+          <image-slot id="{{ item.slot }}" fit="cover" shape="rect" placeholder="{{ item.caption }}" style="width:100%;height:100%;display:block"></image-slot>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(31,43,36,0) 45%,rgba(31,43,36,.7) 100%);pointer-events:none"></div>
+          <span style="position:absolute;left:18px;bottom:16px;color:#f6f1e7;font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:500;letter-spacing:.01em;pointer-events:none;text-shadow:0 1px 8px rgba(0,0,0,.3)">{{ item.caption }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background:#1f2b24;color:#f1ece1;padding:clamp(80px,12vh,140px) 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(36px,5vw,72px);align-items:start">
+      <div data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px">
+          <span style="width:34px;height:1px;background:#c0883c;display:block"></span>
+          <span style="letter-spacing:.3em;font-size:11.5px;text-transform:uppercase;color:#e8c89a;font-weight:600">{{ t.form.eyebrow }}</span>
+        </div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(34px,4.6vw,58px);line-height:1.04;letter-spacing:-.01em;margin:0 0 20px;color:#f6f1e7">{{ t.form.title }}</h2>
+        <p style="margin:0 0 38px;font-size:16px;line-height:1.65;color:rgba(241,236,225,.74);max-width:46ch">{{ t.form.sub }}</p>
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <a href="tel:+902160000000" style="display:flex;align-items:center;gap:15px;color:inherit;text-decoration:none">
+            <span style="width:46px;height:46px;border-radius:50%;border:1px solid rgba(241,236,225,.22);display:flex;align-items:center;justify-content:center"><i class="ph ph-phone" style="font-size:19px;color:#e8c89a"></i></span>
+            <span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(241,236,225,.55)">{{ t.form.phoneLabel }}</span><span style="font-size:15px;font-weight:600">{{ t.form.phoneVal }}</span></span>
+          </a>
+          <a href="https://wa.me/905550000000" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:15px;color:inherit;text-decoration:none">
+            <span style="width:46px;height:46px;border-radius:50%;border:1px solid rgba(241,236,225,.22);display:flex;align-items:center;justify-content:center"><i class="ph-fill ph-whatsapp-logo" style="font-size:20px;color:#e8c89a"></i></span>
+            <span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(241,236,225,.55)">{{ t.form.waLabel }}</span><span style="font-size:15px;font-weight:600">{{ t.form.waVal }}</span></span>
+          </a>
+          <div style="display:flex;align-items:center;gap:15px">
+            <span style="width:46px;height:46px;border-radius:50%;border:1px solid rgba(241,236,225,.22);display:flex;align-items:center;justify-content:center"><i class="ph ph-map-pin" style="font-size:19px;color:#e8c89a"></i></span>
+            <span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(241,236,225,.55)">{{ t.form.addrLabel }}</span><span style="font-size:15px;font-weight:600">{{ t.form.addrVal }}</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal style="opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)">
+        <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ onSubmit }}" style="background:#faf6ee;border-radius:5px;padding:clamp(28px,3vw,40px)">
+          <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:20px">
+            <label style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#2b3a31">{{ t.form.name }}</label>
+            <input type="text" value="{{ form.name }}" onInput="{{ onName }}" placeholder="{{ t.form.namePh }}" style="font-family:'Manrope',sans-serif;font-size:15px;padding:13px 15px;border:1px solid rgba(43,58,49,.22);border-radius:2px;background:#fff;color:#2b3a31;outline:none;transition:border-color .3s" style-focus="border-color:#c0883c">
+            <sc-if value="{{ errors.name }}" hint-placeholder-val="{{ false }}"><span style="font-size:12.5px;color:#b3502f">{{ errors.name }}</span></sc-if>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:20px">
+            <label style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#2b3a31">{{ t.form.phone }}</label>
+            <input type="tel" value="{{ form.phone }}" onInput="{{ onPhone }}" placeholder="{{ t.form.phonePh }}" style="font-family:'Manrope',sans-serif;font-size:15px;padding:13px 15px;border:1px solid rgba(43,58,49,.22);border-radius:2px;background:#fff;color:#2b3a31;outline:none;transition:border-color .3s" style-focus="border-color:#c0883c">
+            <sc-if value="{{ errors.phone }}" hint-placeholder-val="{{ false }}"><span style="font-size:12.5px;color:#b3502f">{{ errors.phone }}</span></sc-if>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:20px">
+            <label style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#2b3a31">{{ t.form.type }}</label>
+            <select value="{{ form.type }}" onChange="{{ onType }}" style="font-family:'Manrope',sans-serif;font-size:15px;padding:13px 15px;border:1px solid rgba(43,58,49,.22);border-radius:2px;background:#fff;color:#2b3a31;outline:none;cursor:pointer;transition:border-color .3s" style-focus="border-color:#c0883c">
+              <option value="">{{ t.form.typePh }}</option>
+              <sc-for list="{{ t.form.typeOptions }}" as="opt" hint-placeholder-count="5"><option value="{{ opt }}">{{ opt }}</option></sc-for>
+            </select>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:22px">
+            <label style="font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#2b3a31">{{ t.form.msg }} <span style="text-transform:none;letter-spacing:0;color:#8a9388;font-weight:400">{{ t.form.msgHint }}</span></label>
+            <textarea value="{{ form.message }}" onInput="{{ onMessage }}" rows="3" placeholder="{{ t.form.msgPh }}" style="font-family:'Manrope',sans-serif;font-size:15px;padding:13px 15px;border:1px solid rgba(43,58,49,.22);border-radius:2px;background:#fff;color:#2b3a31;outline:none;resize:vertical;transition:border-color .3s" style-focus="border-color:#c0883c"></textarea>
+          </div>
+          <label style="display:flex;align-items:flex-start;gap:10px;margin-bottom:24px;cursor:pointer">
+            <input type="checkbox" checked="{{ form.consent }}" onChange="{{ onConsent }}" style="margin-top:2px;width:16px;height:16px;accent-color:#c0883c;cursor:pointer">
+            <span style="font-size:12.5px;line-height:1.5;color:#5d6b60">{{ t.form.consent }}</span>
+          </label>
+          <sc-if value="{{ errors.consent }}" hint-placeholder-val="{{ false }}"><div style="font-size:12.5px;color:#b3502f;margin:-14px 0 18px">{{ errors.consent }}</div></sc-if>
+          <button type="submit" style="width:100%;font-family:'Manrope',sans-serif;cursor:pointer;border:none;background:#c0883c;color:#fff;font-size:15px;font-weight:600;letter-spacing:.03em;padding:16px;border-radius:2px;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .3s,transform .2s" style-hover="background:#a16f2c" style-active="transform:scale(.99)">{{ t.form.cta }} <i class="ph ph-arrow-right"></i></button>
+        </form>
+        </sc-if>
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#faf6ee;border-radius:5px;padding:clamp(40px,5vw,60px) clamp(28px,3vw,40px);text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px">
+          <i class="ph-fill ph-check-circle" style="font-size:58px;color:#3f7a4f"></i>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;margin:0;color:#2b3a31">{{ t.form.success }}</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#5d6b60;max-width:38ch">{{ t.form.successSub }}</p>
+          <button onClick="{{ resetForm }}" style="margin-top:6px;font-family:'Manrope',sans-serif;cursor:pointer;background:transparent;border:1px solid rgba(43,58,49,.25);color:#2b3a31;font-size:13px;font-weight:600;padding:11px 22px;border-radius:2px;transition:background .3s,color .3s" style-hover="background:#2b3a31;color:#f1ece1">{{ t.form.successAgain }}</button>
+        </div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#1a241e;color:rgba(241,236,225,.7);padding:48px 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,48px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#f6f1e7;letter-spacing:.03em">Referans Pendik</span>
+      <span style="font-size:12px;letter-spacing:.02em">{{ t.footer.dev }}</span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:22px;font-size:13px">
+      <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="5"><a onClick="{{ link.onClick }}" style="cursor:pointer;color:inherit;text-decoration:none">{{ link.label }}</a></sc-for>
+    </div>
+  </div>
+  <div style="max-width:1280px;margin:28px auto 0;padding:20px clamp(20px,5vw,48px) 0;border-top:1px solid rgba(241,236,225,.1);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:11.5px;color:rgba(241,236,225,.5)">
+    <span>{{ t.footer.rights }}</span>
+    <span>{{ t.footer.disclaimer }}</span>
+  </div>
+</footer>
+
+<sc-if value="{{ showWhatsApp }}" hint-placeholder-val="{{ true }}">
+<a href="https://wa.me/905550000000" target="_blank" rel="noopener" aria-label="WhatsApp" style="position:fixed;right:clamp(16px,3vw,28px);bottom:clamp(16px,3vw,28px);z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 26px rgba(37,211,102,.4);transition:transform .25s" style-hover="transform:scale(1.08)">
+  <i class="ph-fill ph-whatsapp-logo" style="font-size:31px"></i>
+</a>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;tr&quot;,&quot;en&quot;],&quot;default&quot;:&quot;tr&quot;,&quot;tsType&quot;:&quot;'tr'|'en'&quot;},&quot;showWhatsApp&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;reduceMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  constructor(props){
+    super(props);
+    this.rootRef = React.createRef();
+    this.navRef = React.createRef();
+    this.heroBgRef = React.createRef();
+    this.aptScrollerRef = React.createRef();
+    this.state = {
+      lang: (this.props.defaultLang === 'en') ? 'en' : 'tr',
+      locTab: 'ulasim',
+      form: { name:'', phone:'', type:'', message:'', consent:false },
+      errors: {},
+      submitted: false,
+    };
+    this._scrolled = null;
+    this._ticking = false;
+
+    this.APTS = [
+      { type:'2+1', size:'92 m²', slot:'plan-2-1', tr:'Genç çiftler ve ilk evler için ideal bir başlangıç.', en:'An ideal start for young couples and first homes.' },
+      { type:'3+1', size:'128 m²', slot:'plan-3-1', tr:'Büyüyen aileler için ferah ve dengeli bir plan.', en:'A spacious, balanced plan for growing families.' },
+      { type:'3.5+1', size:'156 m²', slot:'plan-35-1', tr:'Ekstra çalışma ya da çocuk odasıyla esnek yaşam.', en:'Flexible living with an extra study or kids’ room.' },
+      { type:'4+1', size:'184 m²', slot:'plan-4-1', tr:'Geniş aileler için cömert ve konforlu alanlar.', en:'Generous, comfortable space for larger families.' },
+      { type:'Dubleks', size:'232 m²', slot:'plan-dubleks', tr:'İki katlı, özel teraslı en seçkin yaşam tarzı.', en:'Two-storey living with a private terrace.' },
+    ];
+    this.LIFE = [
+      { slot:'life-pool', c:2, r:2, tr:'Süs Havuzları', en:'Ornamental Pools' },
+      { slot:'life-landscape', c:2, r:1, tr:'35.000 m² Peyzaj', en:'35,000 m² Landscape' },
+      { slot:'life-fitness', c:1, r:1, tr:'Açık Hava Spor', en:'Outdoor Fitness' },
+      { slot:'life-playground', c:1, r:1, tr:'Çocuk Oyun Alanı', en:'Children’s Playground' },
+      { slot:'life-pond', c:2, r:1, tr:'Gölet & Yürüyüş Parkuru', en:'Pond & Walking Trail' },
+      { slot:'life-garden', c:2, r:1, tr:'Gül & Meyve Bahçesi', en:'Rose & Fruit Garden' },
+    ];
+    this.TABKEYS = ['ulasim','saglik','egitim','yasam'];
+
+    this.I18N = {
+      tr: {
+        nav: { cta:'Bilgi Al', links:[
+          {label:'Proje', id:'highlights'},{label:'Daireler', id:'apartments'},{label:'Konum', id:'location'},{label:'Yaşam', id:'lifestyle'},{label:'İletişim', id:'contact'} ] },
+        hero: { eyebrow:'Pendik · İstanbul', line1:'Doğanın Kalbinde,', line2:'Denizin Huzurunda', cta:'Bilgi Al', cta2:'Projeyi Keşfet', scroll:'Keşfet',
+          stats:[ {num:'686', label:'Ünite'}, {num:'35.000 m²', label:'Peyzaj'}, {num:'Deniz', label:'Manzarası'} ] },
+        hl: { eyebrow:'Şehrin İçinde, Doğanın Kucağında', title:'Yeşilin, denizin ve marina’nın buluştuğu yer', sub:'Türkiye’nin ilk planlı yerleşim bölgesinde; koru, millet bahçesi ve marina manzarasıyla her gün huzurlu bir yaşam.',
+          cards:[
+            {icon:'ph-tree', title:'Gözdağı Korusu', desc:'Evinizin hemen yanında uzanan koru; sabah yürüyüşleri ve temiz hava için.'},
+            {icon:'ph-flower-lotus', title:'Millet Bahçesi', desc:'Geniş çim alanları, gül ve meyve bahçeleriyle ailecek geçirilen vakit.'},
+            {icon:'ph-sailboat', title:'Marina Manzarası', desc:'Adalar ve denizin eşsiz manzarası, balkonunuzdan her gün önünüzde.'} ] },
+        apt: { title:'Size Göre Bir Ev', sub:'2+1’den dubleks dairelere kadar, her yaşam biçimine uygun ferah planlar.', cta:'Detayları Gör', note:'*Belirtilen alanlar temsilidir.' },
+        loc: { title:'Her Şey Yanı Başınızda', sub:'Metro, sahil, okullar ve sağlık kuruluşları; hepsi dakikalar içinde ulaşılabilir.', mapNote:'Pendik, İstanbul',
+          tabLabels:{ ulasim:'Ulaşım', saglik:'Sağlık', egitim:'Eğitim', yasam:'Yaşam' },
+          items:{
+            ulasim:[ {name:'M4 Metro (Kadıköy–Sabiha Gökçen)', dist:'50 m'},{name:'Otobüs & Minibüs Durağı', dist:'50 m'},{name:'E-5 Karayolu', dist:'50 m'},{name:'Pendik Marmaray', dist:'2 km'},{name:'Hızlı Feribot (Yalova)', dist:'3,5 km'},{name:'Sabiha Gökçen Havalimanı', dist:'10 km'},{name:'TEM Otoyolu', dist:'10 km'} ],
+            saglik:[ {name:'Bölge Hastanesi', dist:'1 km'},{name:'VM Medical Park', dist:'2 km'},{name:'Medipol Üniversite Hastanesi', dist:'2 km'},{name:'Şifa Hastanesi', dist:'2 km'},{name:'Marmara Eğitim Araştırma Hast.', dist:'2,5 km'},{name:'Yüzyıl Hastanesi', dist:'3 km'} ],
+            egitim:[ {name:'Uğur Okulları', dist:'3 km'},{name:'Gedik Üniversitesi', dist:'3,5 km'},{name:'Bahçeşehir Koleji', dist:'6 km'},{name:'İTÜ Tuzla Denizcilik Kampüsü', dist:'12 km'},{name:'Gebze Teknik Üniversitesi', dist:'14 km'},{name:'Sabancı Üniversitesi', dist:'17 km'} ],
+            yasam:[ {name:'Millet Bahçesi', dist:'komşu'},{name:'Pendik Sahil', dist:'yakın'},{name:'Aydos Ormanı', dist:'yakın'},{name:'Viaport Marina', dist:'AVM'},{name:'Neomarin', dist:'AVM'},{name:'Pendorya', dist:'AVM'} ]
+          } },
+        life: { title:'Eve Dönmenin Yeni Hali', sub:'Süs havuzlarından çocuk oyun alanlarına, 35.000 m²’lik peyzajda kurulan bir yaşam.' },
+        form: { eyebrow:'İletişim', title:'Ayrıcalıklı Yaşamı Keşfedin', sub:'Formu doldurun; size özel bilgilendirme ve güncel fiyat listesi için sizi arayalım.',
+          name:'Ad Soyad', namePh:'Adınız ve soyadınız', phone:'Telefon', phonePh:'05XX XXX XX XX', type:'İlgilenilen Daire Tipi', typePh:'Seçiniz', typeOptions:['2+1','3+1','3.5+1','4+1','Dubleks'],
+          msg:'Mesaj', msgHint:'(opsiyonel)', msgPh:'Eklemek istedikleriniz...', consent:'Kişisel verilerimin bilgilendirme amacıyla işlenmesine onay veriyorum.',
+          cta:'Bilgi Talep Et', phoneLabel:'Telefon', phoneVal:'+90 216 000 00 00', waLabel:'WhatsApp', waVal:'+90 555 000 00 00', addrLabel:'Adres', addrVal:'Pendik, İstanbul',
+          success:'Teşekkürler!', successSub:'Talebiniz alındı. Kısa süre içinde sizinle iletişime geçeceğiz.', successAgain:'Yeni Talep Oluştur',
+          errName:'Lütfen adınızı girin.', errPhone:'Geçerli bir telefon numarası girin.', errConsent:'Devam etmek için onay vermeniz gerekir.' },
+        footer: { dev:'KİLER GYO & İLBANK ortaklığı', rights:'© 2026 Referans Pendik. Tüm hakları saklıdır.', disclaimer:'Görseller ve alanlar temsilidir.' }
+      },
+      en: {
+        nav: { cta:'Get Info', links:[
+          {label:'Project', id:'highlights'},{label:'Residences', id:'apartments'},{label:'Location', id:'location'},{label:'Lifestyle', id:'lifestyle'},{label:'Contact', id:'contact'} ] },
+        hero: { eyebrow:'Pendik · İstanbul', line1:'In the Heart of Nature,', line2:'the Calm of the Sea', cta:'Get Info', cta2:'Explore Project', scroll:'Explore',
+          stats:[ {num:'686', label:'Units'}, {num:'35,000 m²', label:'Landscape'}, {num:'Sea', label:'View'} ] },
+        hl: { eyebrow:'Inside the City, Embraced by Nature', title:'Where greenery, the sea and the marina meet', sub:'In Turkey’s first planned settlement district — woodland, a nation’s garden and marina views make every day calm.',
+          cards:[
+            {icon:'ph-tree', title:'Gözdağı Woodland', desc:'A woodland reserve right beside your home — for morning walks and fresh air.'},
+            {icon:'ph-flower-lotus', title:'Nation’s Garden', desc:'Vast lawns, rose and fruit gardens — time together for the whole family.'},
+            {icon:'ph-sailboat', title:'Marina Views', desc:'Unmatched views of the islands and sea, before you from your balcony every day.'} ] },
+        apt: { title:'A Home Made for You', sub:'From 2+1 to duplex homes — spacious plans for every way of living.', cta:'View Details', note:'*Stated areas are representative.' },
+        loc: { title:'Everything Right Beside You', sub:'Metro, the coast, schools and healthcare — all reachable within minutes.', mapNote:'Pendik, İstanbul',
+          tabLabels:{ ulasim:'Transport', saglik:'Health', egitim:'Education', yasam:'Lifestyle' },
+          items:{
+            ulasim:[ {name:'M4 Metro (Kadıköy–Sabiha Gökçen)', dist:'50 m'},{name:'Bus & Minibus Stop', dist:'50 m'},{name:'E-5 Highway', dist:'50 m'},{name:'Pendik Marmaray', dist:'2 km'},{name:'Fast Ferry (Yalova)', dist:'3.5 km'},{name:'Sabiha Gökçen Airport', dist:'10 km'},{name:'TEM Motorway', dist:'10 km'} ],
+            saglik:[ {name:'District Hospital', dist:'1 km'},{name:'VM Medical Park', dist:'2 km'},{name:'Medipol University Hospital', dist:'2 km'},{name:'Şifa Hospital', dist:'2 km'},{name:'Marmara Research Hospital', dist:'2.5 km'},{name:'Yüzyıl Hospital', dist:'3 km'} ],
+            egitim:[ {name:'Uğur Schools', dist:'3 km'},{name:'Gedik University', dist:'3.5 km'},{name:'Bahçeşehir College', dist:'6 km'},{name:'İTÜ Tuzla Maritime Campus', dist:'12 km'},{name:'Gebze Technical University', dist:'14 km'},{name:'Sabancı University', dist:'17 km'} ],
+            yasam:[ {name:'Nation’s Garden', dist:'next door'},{name:'Pendik Coast', dist:'nearby'},{name:'Aydos Forest', dist:'nearby'},{name:'Viaport Marina', dist:'Mall'},{name:'Neomarin', dist:'Mall'},{name:'Pendorya', dist:'Mall'} ]
+          } },
+        life: { title:'A New Way to Come Home', sub:'From ornamental pools to children’s playgrounds — a life set within 35,000 m² of landscape.' },
+        form: { eyebrow:'Contact', title:'Discover the Privileged Life', sub:'Fill in the form and we’ll call you with tailored details and the current price list.',
+          name:'Full Name', namePh:'Your full name', phone:'Phone', phonePh:'+90 5XX XXX XX XX', type:'Apartment Type of Interest', typePh:'Select', typeOptions:['2+1','3+1','3.5+1','4+1','Duplex'],
+          msg:'Message', msgHint:'(optional)', msgPh:'Anything you’d like to add...', consent:'I consent to the processing of my personal data for information purposes.',
+          cta:'Request Information', phoneLabel:'Phone', phoneVal:'+90 216 000 00 00', waLabel:'WhatsApp', waVal:'+90 555 000 00 00', addrLabel:'Address', addrVal:'Pendik, İstanbul',
+          success:'Thank you!', successSub:'Your request has been received. We’ll be in touch with you shortly.', successAgain:'Make a New Request',
+          errName:'Please enter your name.', errPhone:'Please enter a valid phone number.', errConsent:'You must give consent to continue.' },
+        footer: { dev:'A KİLER GYO & İLBANK partnership', rights:'© 2026 Referans Pendik. All rights reserved.', disclaimer:'Images and areas are representative.' }
+      }
+    };
+  }
+
+  componentDidMount(){
+    const reduce = (this.props.reduceMotion === true) || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    this._reduce = reduce;
+    const root = this.rootRef.current;
+    if(root){
+      const els = Array.from(root.querySelectorAll('[data-reveal]'));
+      els.forEach(el=>{
+        const p = el.parentElement;
+        const sibs = p ? Array.from(p.children).filter(c=>c.hasAttribute && c.hasAttribute('data-reveal')) : [el];
+        const i = Math.max(0, sibs.indexOf(el));
+        el.style.transitionDelay = (i*80)+'ms';
+      });
+      const reveal = el => { el.style.opacity='1'; el.style.transform='none'; };
+      if(reduce || !('IntersectionObserver' in window)){
+        els.forEach(reveal);
+      } else {
+        const io = new IntersectionObserver((ents)=>{
+          ents.forEach(e=>{ if(e.isIntersecting){ reveal(e.target); io.unobserve(e.target); } });
+        }, { threshold:0.12, rootMargin:'0px 0px -7% 0px' });
+        els.forEach(el=>io.observe(el));
+        this._io = io;
+        this._fallback = setTimeout(()=>els.forEach(reveal), 2200);
+      }
+    }
+    this._onScroll = ()=>{ if(this._ticking) return; this._ticking=true; requestAnimationFrame(()=>{ this._ticking=false; this._applyScroll(); }); };
+    window.addEventListener('scroll', this._onScroll, { passive:true });
+    this._applyScroll();
+  }
+
+  componentWillUnmount(){
+    if(this._onScroll) window.removeEventListener('scroll', this._onScroll);
+    if(this._io) this._io.disconnect();
+    if(this._fallback) clearTimeout(this._fallback);
+  }
+
+  _applyScroll(){
+    const y = window.scrollY || window.pageYOffset || 0;
+    const nav = this.navRef.current;
+    if(nav){
+      const solid = y > 120;
+      if(solid !== this._scrolled){
+        this._scrolled = solid;
+        if(solid){
+          nav.style.background='rgba(241,236,225,0.94)';
+          nav.style.color='#2b3a31';
+          nav.style.boxShadow='0 1px 0 rgba(43,58,49,0.07), 0 10px 34px rgba(43,58,49,0.07)';
+          nav.style.backdropFilter='blur(12px)';
+          nav.style.webkitBackdropFilter='blur(12px)';
+          nav.style.paddingTop='13px';
+          nav.style.paddingBottom='13px';
+        } else {
+          nav.style.background='transparent';
+          nav.style.color='#f1ece1';
+          nav.style.boxShadow='none';
+          nav.style.backdropFilter='none';
+          nav.style.webkitBackdropFilter='none';
+          nav.style.paddingTop='18px';
+          nav.style.paddingBottom='18px';
+        }
+      }
+    }
+    if(!this._reduce){
+      const bg = this.heroBgRef.current;
+      if(bg && y < window.innerHeight * 1.2){
+        bg.style.transform = 'translate3d(0,'+(y*0.22)+'px,0) scale(1.06)';
+      }
+    }
+  }
+
+  scrollToId(id){
+    const el = (this.rootRef.current || document).querySelector('#'+id);
+    if(el){
+      const y = el.getBoundingClientRect().top + window.scrollY - 68;
+      window.scrollTo({ top:y, behavior:'smooth' });
+    }
+  }
+
+  toTop = () => window.scrollTo({ top:0, behavior:'smooth' });
+  scrollToForm = () => this.scrollToId('contact');
+  exploreCta = () => this.scrollToId('apartments');
+  setTr = () => this.setState({ lang:'tr' });
+  setEn = () => this.setState({ lang:'en' });
+  aptScroll(dir){ const s=this.aptScrollerRef.current; if(s) s.scrollBy({ left:dir*330, behavior:'smooth' }); }
+  aptPrev = () => this.aptScroll(-1);
+  aptNext = () => this.aptScroll(1);
+
+  onName = (e) => { const v=e.target.value; this.setState(s=>({ form:{...s.form,name:v}, errors:{...s.errors,name:undefined} })); };
+  onPhone = (e) => { const v=e.target.value; this.setState(s=>({ form:{...s.form,phone:v}, errors:{...s.errors,phone:undefined} })); };
+  onType = (e) => { const v=e.target.value; this.setState(s=>({ form:{...s.form,type:v} })); };
+  onMessage = (e) => { const v=e.target.value; this.setState(s=>({ form:{...s.form,message:v} })); };
+  onConsent = (e) => { const v=e.target.checked; this.setState(s=>({ form:{...s.form,consent:v}, errors:{...s.errors,consent:undefined} })); };
+  resetForm = () => this.setState({ submitted:false, form:{ name:'', phone:'', type:'', message:'', consent:false }, errors:{} });
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const f = this.state.form;
+    const t = this.I18N[this.state.lang].form;
+    const errors = {};
+    if(!f.name.trim()) errors.name = t.errName;
+    const digits = (f.phone||'').replace(/\D/g,'');
+    if(digits.length < 10) errors.phone = t.errPhone;
+    if(!f.consent) errors.consent = t.errConsent;
+    if(Object.keys(errors).length){ this.setState({ errors }); return; }
+    this.setState({ submitted:true, errors:{} });
+  };
+
+  renderVals(){
+    const lang = this.state.lang;
+    const t = this.I18N[lang];
+    const apartments = this.APTS.map(a => ({ type:a.type, size:a.size, slot:a.slot, desc:a[lang] }));
+    const lifeItems = this.LIFE.map(x => ({ slot:x.slot, caption:x[lang], gridStyle:{ position:'relative', overflow:'hidden', borderRadius:'3px', gridColumn:'span '+x.c, gridRow:'span '+x.r, opacity:0, transform:'translateY(30px)', transition:'opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1)' } }));
+    const navLinks = t.nav.links.map(l => ({ label:l.label, onClick:()=>this.scrollToId(l.id) }));
+    const baseTab = { fontFamily:"'Manrope',sans-serif", cursor:'pointer', fontSize:'13px', fontWeight:600, letterSpacing:'.03em', padding:'10px 18px', borderRadius:'2px', transition:'background .3s, color .3s, border-color .3s' };
+    const tabs = this.TABKEYS.map(k => {
+      const active = this.state.locTab === k;
+      return {
+        label: t.loc.tabLabels[k],
+        onClick: ()=>this.setState({ locTab:k }),
+        btnStyle: active
+          ? { ...baseTab, background:'#c0883c', color:'#fff', border:'1px solid #c0883c' }
+          : { ...baseTab, background:'transparent', color:'rgba(241,236,225,.8)', border:'1px solid rgba(241,236,225,.25)' }
+      };
+    });
+    const locItems = t.loc.items[this.state.locTab];
+    return {
+      rootRef:this.rootRef, navRef:this.navRef, heroBgRef:this.heroBgRef, aptScrollerRef:this.aptScrollerRef,
+      lang, t, apartments, lifeItems, navLinks, tabs, locItems,
+      trOpacity: lang==='tr' ? 1 : 0.45,
+      enOpacity: lang==='en' ? 1 : 0.45,
+      showWhatsApp: this.props.showWhatsApp !== false,
+      form:this.state.form, errors:this.state.errors,
+      submitted:this.state.submitted, notSubmitted:!this.state.submitted,
+      toTop:this.toTop, scrollToForm:this.scrollToForm, exploreCta:this.exploreCta,
+      setTr:this.setTr, setEn:this.setEn, aptPrev:this.aptPrev, aptNext:this.aptNext,
+      onName:this.onName, onPhone:this.onPhone, onType:this.onType, onMessage:this.onMessage, onConsent:this.onConsent,
+      onSubmit:this.onSubmit, resetForm:this.resetForm
+    };
+  }
+}
+</script>
+<template id="__bundler_thumbnail" data-bg-color="#2b3a31">
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="800" fill="#2b3a31"/>
+<path d="M0 560 q150 -70 300 -30 t300 -10 300 -50 300 -20 v350 H0 Z" fill="#33453a"/>
+<path d="M0 640 q200 -50 400 -20 t400 -30 400 0 v250 H0 Z" fill="#1f2b24"/>
+<circle cx="600" cy="300" r="70" fill="#e8c89a"/>
+<text x="600" y="470" text-anchor="middle" font-family="Georgia, serif" font-size="66" fill="#f6f1e7" font-style="italic">Referans Pendik</text>
+<text x="600" y="520" text-anchor="middle" font-family="Georgia, serif" font-size="22" letter-spacing="10" fill="#c0883c">PENDİK · İSTANBUL</text>
+</svg>
+</template>
+</body>
+</html>
