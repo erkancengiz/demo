@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Referans Pendik — Pendik · İstanbul</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Manrope',system-ui,sans-serif;background:#f1ece1;color:#2b3a31;overflow-x:hidden}
+::selection{background:#c0883c;color:#fff}
+
+/* ── Nav ────────────────────────────────────────────────────────────────── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px clamp(20px,5vw,48px);
+  color:#f1ece1;background:transparent;
+  transition:background .45s,color .45s,box-shadow .45s,padding .45s,backdrop-filter .45s;
+}
+#nav.scrolled{
+  background:rgba(241,236,225,.94);color:#2b3a31;
+  box-shadow:0 1px 0 rgba(43,58,49,.07),0 10px 34px rgba(43,58,49,.07);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  padding-top:13px;padding-bottom:13px;
+}
+.nav-logo{cursor:pointer;display:flex;flex-direction:column;line-height:1}
+.nav-logo-name{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600;letter-spacing:.03em}
+.nav-logo-sub{font-size:9px;letter-spacing:.42em;text-transform:uppercase;opacity:.72;margin-top:5px}
+.nav-links{display:flex;gap:clamp(20px,2.6vw,38px);font-size:13px;font-weight:500;letter-spacing:.015em}
+.nav-links a{cursor:pointer;color:inherit;text-decoration:none;opacity:.92;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+.nav-right{display:flex;align-items:center;gap:clamp(12px,2vw,22px)}
+.lang-toggle{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;letter-spacing:.08em}
+.lang-toggle span{cursor:pointer;transition:opacity .2s}
+.lang-sep{opacity:.4;cursor:default!important}
+.nav-cta{
+  font-family:'Manrope',sans-serif;cursor:pointer;border:none;
+  background:#c0883c;color:#fff;font-size:13px;font-weight:600;
+  letter-spacing:.04em;padding:11px 22px;border-radius:2px;
+  transition:background .3s,transform .2s;
+}
+.nav-cta:hover{background:#a16f2c}
+.nav-cta:active{transform:scale(.97)}
+@media(max-width:920px){.nav-links{display:none!important}}
+
+/* ── Hero ───────────────────────────────────────────────────────────────── */
+#hero{position:relative;min-height:100dvh;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;left:0;right:0;top:-8%;height:118%;will-change:transform}
+.hero-img{
+  width:100%;height:100%;
+  background:linear-gradient(160deg,#0d1f16 0%,#1a2e22 30%,#2b3a31 60%,#3d5244 100%);
+}
+.hero-overlay{
+  position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(31,43,36,.55) 0%,rgba(31,43,36,.12) 32%,rgba(31,43,36,.18) 58%,rgba(31,43,36,.86) 100%);
+}
+.hero-content{
+  position:relative;z-index:2;width:100%;
+  max-width:1280px;margin:0 auto;
+  padding:0 clamp(20px,5vw,48px) clamp(70px,11vh,120px);
+}
+.hero-inner{max-width:780px}
+.hero-eyebrow{display:flex;align-items:center;gap:13px;margin-bottom:26px}
+.eyebrow-bar{width:36px;height:1px;background:#c0883c;display:block;flex-shrink:0}
+.eyebrow-label{letter-spacing:.34em;font-size:12px;text-transform:uppercase;color:#e8c89a;font-weight:600}
+h1{
+  font-family:'Cormorant Garamond',serif;color:#f6f1e7;
+  font-weight:600;font-size:clamp(44px,7.2vw,98px);
+  line-height:.98;letter-spacing:-.01em;margin:0 0 28px;
+}
+.h1-line2{display:block;font-style:italic;font-weight:500;color:#ecdcc2}
+.hero-stats{display:flex;flex-wrap:wrap;gap:clamp(26px,4vw,60px);margin-bottom:38px}
+.hero-stat{display:flex;flex-direction:column;gap:5px}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(30px,3.4vw,44px);font-weight:600;color:#e8c89a;line-height:1;
+}
+.stat-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(246,241,231,.78);font-weight:600}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px}
+.btn-primary{
+  font-family:'Manrope',sans-serif;cursor:pointer;border:none;
+  background:#c0883c;color:#fff;font-size:14px;font-weight:600;
+  letter-spacing:.03em;padding:16px 32px;border-radius:2px;
+  display:flex;align-items:center;gap:10px;
+  transition:background .3s,transform .2s;
+}
+.btn-primary:hover{background:#a16f2c}
+.btn-primary:active{transform:scale(.98)}
+.btn-ghost{
+  font-family:'Manrope',sans-serif;cursor:pointer;
+  background:transparent;color:#f6f1e7;
+  border:1px solid rgba(246,241,231,.5);
+  font-size:14px;font-weight:600;letter-spacing:.03em;
+  padding:16px 30px;border-radius:2px;
+  transition:background .3s,border-color .3s;
+}
+.btn-ghost:hover{background:rgba(246,241,231,.12);border-color:rgba(246,241,231,.8)}
+.hero-scroll-hint{
+  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+  z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:rgba(246,241,231,.7);
+}
+.hero-scroll-hint span{font-size:10px;letter-spacing:.28em;text-transform:uppercase}
+@keyframes rpBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+.hero-scroll-hint i{font-size:18px;animation:rpBounce 1.9s ease-in-out infinite}
+
+/* ── Reveal ─────────────────────────────────────────────────────────────── */
+[data-reveal]{
+  opacity:0;transform:translateY(30px);
+  transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);
+}
+[data-reveal].visible{opacity:1;transform:none}
+.hero-inner[data-reveal]{transition-duration:1s}
+
+/* ── Shared section ─────────────────────────────────────────────────────── */
+.section-wrap{max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+.section-head{max-width:680px}
+.section-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.eyebrow-bar-sm{width:34px;height:1px;background:#c0883c;display:block;flex-shrink:0}
+.eyebrow-text-sm{letter-spacing:.3em;font-size:11.5px;text-transform:uppercase;font-weight:600}
+h2{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:clamp(34px,4.6vw,60px);line-height:1.02;
+  letter-spacing:-.01em;margin:0 0 18px;
+}
+.section-sub{margin:0;font-size:16px;line-height:1.65;color:#5d6b60;max-width:60ch}
+
+/* ── Highlights ─────────────────────────────────────────────────────────── */
+#highlights{background:#f1ece1;padding:clamp(80px,12vh,140px) 0}
+.hl-head{margin-bottom:clamp(48px,7vh,80px)}
+.hl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:clamp(18px,2.5vw,32px)}
+.hl-card{
+  background:#faf6ee;border:1px solid rgba(43,58,49,.1);
+  border-radius:4px;padding:clamp(30px,3vw,44px) clamp(26px,2.6vw,36px);
+  display:flex;flex-direction:column;gap:18px;
+}
+.hl-card i{font-size:46px;color:#c0883c}
+.hl-card h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:28px;margin:0;color:#2b3a31}
+.hl-card p{margin:0;font-size:14.5px;line-height:1.6;color:#5d6b60}
+
+/* ── Apartments ─────────────────────────────────────────────────────────── */
+#apartments{background:#e7dfce;padding:clamp(80px,12vh,140px) 0}
+.apt-head{
+  display:flex;flex-wrap:wrap;align-items:flex-end;
+  justify-content:space-between;gap:24px;
+  margin-bottom:clamp(40px,6vh,64px);
+}
+.apt-head-text{max-width:620px}
+.apt-nav-btns{display:flex;gap:10px}
+.apt-btn{
+  cursor:pointer;width:50px;height:50px;border-radius:50%;
+  border:1px solid rgba(43,58,49,.28);background:transparent;
+  color:#2b3a31;display:flex;align-items:center;justify-content:center;
+  font-size:18px;transition:background .3s,color .3s;
+}
+.apt-btn:hover{background:#2b3a31;color:#f1ece1}
+.apt-scroller{
+  display:flex;gap:22px;overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding:6px clamp(20px,5vw,48px) 26px;
+  max-width:1280px;margin:0 auto;
+  scrollbar-width:thin;scrollbar-color:rgba(43,58,49,.22) transparent;
+}
+.apt-scroller::-webkit-scrollbar{height:6px}
+.apt-scroller::-webkit-scrollbar-track{background:transparent}
+.apt-scroller::-webkit-scrollbar-thumb{background:rgba(43,58,49,.22);border-radius:3px}
+.apt-card{
+  flex:0 0 auto;width:300px;scroll-snap-align:start;
+  background:#faf6ee;border:1px solid rgba(43,58,49,.1);
+  border-radius:4px;overflow:hidden;display:flex;flex-direction:column;
+}
+.apt-img{
+  height:228px;border-bottom:1px solid rgba(43,58,49,.08);
+  background:linear-gradient(135deg,#ddd6c5 0%,#ede7d9 50%,#ddd6c5 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;color:rgba(43,58,49,.3);
+}
+.apt-img i{font-size:36px}
+.apt-img-label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:600}
+.apt-body{padding:24px 22px 26px;display:flex;flex-direction:column;gap:11px;flex:1}
+.apt-type-row{display:flex;align-items:baseline;justify-content:space-between}
+.apt-type{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#2b3a31;line-height:1}
+.apt-size{font-size:13px;letter-spacing:.03em;color:#a16f2c;font-weight:700}
+.apt-desc{margin:0;font-size:13.5px;line-height:1.55;color:#5d6b60;flex:1}
+.apt-cta{
+  margin-top:6px;font-family:'Manrope',sans-serif;cursor:pointer;
+  background:transparent;border:1px solid rgba(43,58,49,.25);
+  color:#2b3a31;font-size:13px;font-weight:600;letter-spacing:.02em;
+  padding:12px 16px;border-radius:2px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .3s,color .3s,border-color .3s;width:100%;
+}
+.apt-cta:hover{background:#2b3a31;color:#f1ece1;border-color:#2b3a31}
+.apt-note{font-size:11.5px;color:#8a9388;letter-spacing:.02em;margin:0;padding:14px 0 0}
+
+/* ── Location ───────────────────────────────────────────────────────────── */
+#location{background:#2b3a31;color:#f1ece1;padding:clamp(80px,12vh,140px) 0}
+#location h2{color:#f6f1e7}
+#location .section-sub{color:rgba(241,236,225,.72)}
+.loc-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+  gap:clamp(28px,4vw,56px);align-items:start;
+}
+.map-slot{
+  position:relative;border-radius:4px;overflow:hidden;
+  min-height:420px;border:1px solid rgba(241,236,225,.16);
+  background:linear-gradient(155deg,#1a2e22 0%,#243b2d 40%,#2b3a31 70%,#1f2b24 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+.map-placeholder{
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+  color:rgba(241,236,225,.22);text-align:center;
+}
+.map-placeholder i{font-size:52px}
+.map-placeholder span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:500}
+.map-badge{
+  position:absolute;left:18px;bottom:18px;
+  background:rgba(43,58,49,.82);backdrop-filter:blur(6px);
+  padding:11px 16px;border-radius:2px;
+  display:flex;align-items:center;gap:9px;
+}
+.map-badge i{font-size:17px;color:#e8c89a}
+.map-badge span{font-size:12.5px;letter-spacing:.04em;font-weight:600}
+.loc-tabs{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px}
+.loc-tab{
+  font-family:'Manrope',sans-serif;cursor:pointer;font-size:13px;
+  font-weight:600;letter-spacing:.03em;padding:10px 18px;border-radius:2px;
+  transition:background .3s,color .3s,border-color .3s;
+  background:transparent;color:rgba(241,236,225,.8);
+  border:1px solid rgba(241,236,225,.25);
+}
+.loc-tab.active{background:#c0883c;color:#fff;border-color:#c0883c}
+.loc-item{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:15px 2px;border-bottom:1px solid rgba(241,236,225,.13);
+}
+.loc-item-name{font-size:14.5px;color:#f1ece1;letter-spacing:.01em}
+.loc-item-dist{font-size:13px;font-weight:600;letter-spacing:.04em;color:#e8c89a;white-space:nowrap}
+
+/* ── Lifestyle ──────────────────────────────────────────────────────────── */
+#lifestyle{background:#f1ece1;padding:clamp(80px,12vh,140px) 0}
+.life-gallery{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:210px;grid-auto-flow:row dense;gap:14px;
+}
+.life-item{position:relative;overflow:hidden;border-radius:3px}
+.life-item-bg{
+  width:100%;height:100%;
+  background:linear-gradient(135deg,#2b3a31 0%,#3d5244 60%,#2b3a31 100%);
+}
+.life-item:nth-child(2) .life-item-bg{background:linear-gradient(160deg,#1f2b24 0%,#2b3a31 50%,#33453a 100%)}
+.life-item:nth-child(3) .life-item-bg{background:linear-gradient(120deg,#243b2d 0%,#3d5244 100%)}
+.life-item:nth-child(4) .life-item-bg{background:linear-gradient(200deg,#2b3a31 0%,#1f3028 100%)}
+.life-item:nth-child(5) .life-item-bg{background:linear-gradient(140deg,#1f2b24 0%,#33453a 100%)}
+.life-item:nth-child(6) .life-item-bg{background:linear-gradient(170deg,#243b2d 0%,#2b3a31 100%)}
+.life-overlay{
+  position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(31,43,36,0) 45%,rgba(31,43,36,.7) 100%);
+}
+.life-caption{
+  position:absolute;left:18px;bottom:16px;
+  color:#f6f1e7;font-family:'Cormorant Garamond',serif;
+  font-size:21px;font-weight:500;letter-spacing:.01em;
+  pointer-events:none;text-shadow:0 1px 8px rgba(0,0,0,.3);
+}
+@media(max-width:760px){
+  .life-gallery{grid-template-columns:repeat(2,1fr)!important}
+  .life-item{grid-column:auto!important;grid-row:auto!important;min-height:220px}
+}
+@media(max-width:480px){.life-gallery{grid-template-columns:1fr!important}}
+
+/* ── Contact ────────────────────────────────────────────────────────────── */
+#contact{background:#1f2b24;color:#f1ece1;padding:clamp(80px,12vh,140px) 0}
+#contact h2{color:#f6f1e7;margin:0 0 20px}
+.contact-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:clamp(36px,5vw,72px);align-items:start;
+}
+.contact-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.contact-eyebrow-text{letter-spacing:.3em;font-size:11.5px;text-transform:uppercase;color:#e8c89a;font-weight:600}
+.contact-sub{margin:0 0 38px;font-size:16px;line-height:1.65;color:rgba(241,236,225,.74);max-width:46ch}
+.contact-links{display:flex;flex-direction:column;gap:20px}
+.contact-link{display:flex;align-items:center;gap:15px;color:inherit;text-decoration:none}
+.contact-icon{
+  width:46px;height:46px;border-radius:50%;flex-shrink:0;
+  border:1px solid rgba(241,236,225,.22);
+  display:flex;align-items:center;justify-content:center;
+}
+.contact-icon i{font-size:19px;color:#e8c89a}
+.contact-icon .wa{font-size:20px}
+.contact-link-text{display:flex;flex-direction:column;gap:2px}
+.contact-link-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(241,236,225,.55)}
+.contact-link-val{font-size:15px;font-weight:600}
+
+/* ── Form ───────────────────────────────────────────────────────────────── */
+.form-box{background:#faf6ee;border-radius:5px;padding:clamp(28px,3vw,40px)}
+.form-group{display:flex;flex-direction:column;gap:7px;margin-bottom:20px}
+.form-label{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#2b3a31}
+.form-label .hint{text-transform:none;letter-spacing:0;color:#8a9388;font-weight:400}
+.form-input,.form-select,.form-textarea{
+  font-family:'Manrope',sans-serif;font-size:15px;
+  padding:13px 15px;border:1px solid rgba(43,58,49,.22);
+  border-radius:2px;background:#fff;color:#2b3a31;
+  outline:none;transition:border-color .3s;width:100%;
+}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:#c0883c}
+.form-select{cursor:pointer}
+.form-textarea{resize:vertical}
+.form-error{font-size:12.5px;color:#b3502f;margin-top:2px}
+.form-consent-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:24px;cursor:pointer}
+.form-consent-row input{margin-top:2px;width:16px;height:16px;accent-color:#c0883c;cursor:pointer;flex-shrink:0}
+.form-consent-text{font-size:12.5px;line-height:1.5;color:#5d6b60}
+.form-consent-error{font-size:12.5px;color:#b3502f;margin:-14px 0 18px}
+.btn-submit{
+  width:100%;font-family:'Manrope',sans-serif;cursor:pointer;border:none;
+  background:#c0883c;color:#fff;font-size:15px;font-weight:600;
+  letter-spacing:.03em;padding:16px;border-radius:2px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:background .3s,transform .2s;
+}
+.btn-submit:hover{background:#a16f2c}
+.btn-submit:active{transform:scale(.99)}
+.form-success{
+  background:#faf6ee;border-radius:5px;
+  padding:clamp(40px,5vw,60px) clamp(28px,3vw,40px);
+  text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px;
+}
+.form-success i{font-size:58px;color:#3f7a4f}
+.form-success h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;margin:0;color:#2b3a31}
+.form-success p{margin:0;font-size:15px;line-height:1.6;color:#5d6b60;max-width:38ch}
+.btn-again{
+  font-family:'Manrope',sans-serif;cursor:pointer;background:transparent;
+  border:1px solid rgba(43,58,49,.25);color:#2b3a31;font-size:13px;
+  font-weight:600;padding:11px 22px;border-radius:2px;
+  transition:background .3s,color .3s;
+}
+.btn-again:hover{background:#2b3a31;color:#f1ece1}
+
+/* ── Footer ─────────────────────────────────────────────────────────────── */
+footer{background:#1a241e;color:rgba(241,236,225,.7);padding:48px 0}
+.footer-top{
+  max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,48px);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;
+}
+.footer-logo{display:flex;flex-direction:column;gap:6px}
+.footer-logo-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#f6f1e7;letter-spacing:.03em}
+.footer-logo-sub{font-size:12px;letter-spacing:.02em}
+.footer-links{display:flex;flex-wrap:wrap;gap:22px;font-size:13px}
+.footer-links a{cursor:pointer;color:inherit;text-decoration:none;transition:opacity .2s}
+.footer-links a:hover{opacity:.8}
+.footer-bottom{
+  max-width:1280px;margin:28px auto 0;
+  padding:20px clamp(20px,5vw,48px) 0;
+  border-top:1px solid rgba(241,236,225,.1);
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
+  font-size:11.5px;color:rgba(241,236,225,.5);
+}
+
+/* ── WhatsApp ───────────────────────────────────────────────────────────── */
+#wa-btn{
+  position:fixed;right:clamp(16px,3vw,28px);bottom:clamp(16px,3vw,28px);z-index:60;
+  width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 26px rgba(37,211,102,.4);transition:transform .25s;text-decoration:none;
+}
+#wa-btn:hover{transform:scale(1.08)}
+#wa-btn i{font-size:31px}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo" onclick="scrollToTop()">
+    <span class="nav-logo-name">Referans Pendik</span>
+    <span class="nav-logo-sub">Pendik · İstanbul</span>
+  </div>
+  <div class="nav-links" id="nav-links"></div>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <span id="btn-tr" onclick="setLang('tr')" style="opacity:1">TR</span>
+      <span class="lang-sep">/</span>
+      <span id="btn-en" onclick="setLang('en')" style="opacity:.45">EN</span>
+    </div>
+    <button class="nav-cta" onclick="scrollToSection('contact')" id="nav-cta-btn"></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg" id="hero-bg"><div class="hero-img"></div></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-inner" data-reveal>
+      <div class="hero-eyebrow">
+        <span class="eyebrow-bar"></span>
+        <span class="eyebrow-label" id="hero-eyebrow"></span>
+      </div>
+      <h1>
+        <span id="hero-line1"></span>
+        <span class="h1-line2" id="hero-line2"></span>
+      </h1>
+      <div class="hero-stats" id="hero-stats"></div>
+      <div class="hero-ctas">
+        <button class="btn-primary" onclick="scrollToSection('contact')">
+          <span id="hero-cta1"></span><i class="ph ph-arrow-right"></i>
+        </button>
+        <button class="btn-ghost" onclick="scrollToSection('apartments')" id="hero-cta2"></button>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <span id="hero-scroll"></span>
+    <i class="ph ph-arrow-down"></i>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section id="highlights">
+  <div class="section-wrap">
+    <div class="section-head hl-head" data-reveal>
+      <div class="section-eyebrow">
+        <span class="eyebrow-bar-sm"></span>
+        <span class="eyebrow-text-sm" style="color:#a16f2c" id="hl-eyebrow"></span>
+      </div>
+      <h2 id="hl-title"></h2>
+      <p class="section-sub" id="hl-sub"></p>
+    </div>
+    <div class="hl-grid" id="hl-cards"></div>
+  </div>
+</section>
+
+<!-- APARTMENTS -->
+<section id="apartments">
+  <div class="section-wrap">
+    <div class="apt-head" data-reveal>
+      <div class="apt-head-text">
+        <h2 id="apt-title"></h2>
+        <p class="section-sub" id="apt-sub"></p>
+      </div>
+      <div class="apt-nav-btns">
+        <button class="apt-btn" onclick="aptScroll(-1)" aria-label="Önceki"><i class="ph ph-arrow-left"></i></button>
+        <button class="apt-btn" onclick="aptScroll(1)" aria-label="Sonraki"><i class="ph ph-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="apt-scroller" id="apt-scroller"></div>
+  <div class="section-wrap"><p class="apt-note" id="apt-note"></p></div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="section-wrap">
+    <div class="section-head" style="margin-bottom:clamp(40px,6vh,64px)" data-reveal>
+      <h2 id="loc-title"></h2>
+      <p class="section-sub" id="loc-sub"></p>
+    </div>
+    <div class="loc-grid">
+      <div class="map-slot" data-reveal>
+        <div class="map-placeholder">
+          <i class="ph ph-map-trifold"></i>
+          <span id="loc-map-label">Konum Haritası</span>
+        </div>
+        <div class="map-badge">
+          <i class="ph ph-map-pin"></i>
+          <span id="loc-map-note"></span>
+        </div>
+      </div>
+      <div data-reveal>
+        <div class="loc-tabs" id="loc-tabs"></div>
+        <div id="loc-items"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFESTYLE -->
+<section id="lifestyle">
+  <div class="section-wrap">
+    <div class="section-head" style="margin-bottom:clamp(40px,6vh,64px)" data-reveal>
+      <h2 id="life-title"></h2>
+      <p class="section-sub" id="life-sub"></p>
+    </div>
+    <div class="life-gallery" id="life-gallery"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-wrap">
+    <div class="contact-grid">
+      <div data-reveal>
+        <div class="contact-eyebrow">
+          <span class="eyebrow-bar-sm"></span>
+          <span class="contact-eyebrow-text" id="form-eyebrow"></span>
+        </div>
+        <h2 id="form-title"></h2>
+        <p class="contact-sub" id="form-sub"></p>
+        <div class="contact-links">
+          <a href="tel:+902160000000" class="contact-link">
+            <span class="contact-icon"><i class="ph ph-phone"></i></span>
+            <span class="contact-link-text">
+              <span class="contact-link-label" id="form-phone-label"></span>
+              <span class="contact-link-val" id="form-phone-val"></span>
+            </span>
+          </a>
+          <a href="https://wa.me/905550000000" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-icon"><i class="ph-fill ph-whatsapp-logo wa"></i></span>
+            <span class="contact-link-text">
+              <span class="contact-link-label" id="form-wa-label"></span>
+              <span class="contact-link-val" id="form-wa-val"></span>
+            </span>
+          </a>
+          <div class="contact-link">
+            <span class="contact-icon"><i class="ph ph-map-pin"></i></span>
+            <span class="contact-link-text">
+              <span class="contact-link-label" id="form-addr-label"></span>
+              <span class="contact-link-val" id="form-addr-val"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div data-reveal id="form-col"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo">
+      <span class="footer-logo-name">Referans Pendik</span>
+      <span class="footer-logo-sub" id="footer-dev"></span>
+    </div>
+    <div class="footer-links" id="footer-links"></div>
+  </div>
+  <div class="footer-bottom">
+    <span id="footer-rights"></span>
+    <span id="footer-disclaimer"></span>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a id="wa-btn" href="https://wa.me/905550000000" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <i class="ph-fill ph-whatsapp-logo"></i>
+</a>
+
+<script>
+// ── Data ──────────────────────────────────────────────────────────────────
+
+const I18N = {
+  tr: {
+    nav: { cta:'Bilgi Al', links:[
+      {label:'Proje',id:'highlights'},{label:'Daireler',id:'apartments'},
+      {label:'Konum',id:'location'},{label:'Yaşam',id:'lifestyle'},{label:'İletişim',id:'contact'}
+    ]},
+    hero: {
+      eyebrow:'Pendik · İstanbul',
+      line1:'Doğanın Kalbinde,', line2:'Denizin Huzurunda',
+      cta:'Bilgi Al', cta2:'Projeyi Keşfet', scroll:'Keşfet',
+      stats:[{num:'686',label:'Ünite'},{num:'35.000 m²',label:'Peyzaj'},{num:'Deniz',label:'Manzarası'}]
+    },
+    hl: {
+      eyebrow:'Şehrin İçinde, Doğanın Kucağında',
+      title:'Yeşilin, denizin ve marinanın buluştuğu yer',
+      sub:'Türkiye\'nin ilk planlı yerleşim bölgesinde; koru, millet bahçesi ve marina manzarasıyla her gün huzurlu bir yaşam.',
+      cards:[
+        {icon:'ph-tree',title:'Gözdağı Korusu',desc:'Evinizin hemen yanında uzanan koru; sabah yürüyüşleri ve temiz hava için.'},
+        {icon:'ph-flower-lotus',title:'Millet Bahçesi',desc:'Geniş çim alanları, gül ve meyve bahçeleriyle ailecek geçirilen vakit.'},
+        {icon:'ph-sailboat',title:'Marina Manzarası',desc:'Adalar ve denizin eşsiz manzarası, balkonunuzdan her gün önünüzde.'}
+      ]
+    },
+    apt:{
+      title:'Size Göre Bir Ev',
+      sub:'2+1\'den dubleks dairelere kadar, her yaşam biçimine uygun ferah planlar.',
+      cta:'Detayları Gör', note:'*Belirtilen alanlar temsilidir.'
+    },
+    loc:{
+      title:'Her Şey Yanı Başınızda',
+      sub:'Metro, sahil, okullar ve sağlık kuruluşları; hepsi dakikalar içinde ulaşılabilir.',
+      mapNote:'Pendik, İstanbul',
+      tabLabels:{ulasim:'Ulaşım',saglik:'Sağlık',egitim:'Eğitim',yasam:'Yaşam'},
+      items:{
+        ulasim:[
+          {name:'M4 Metro (Kadıköy–Sabiha Gökçen)',dist:'50 m'},
+          {name:'Otobüs & Minibüs Durağı',dist:'50 m'},
+          {name:'E-5 Karayolu',dist:'50 m'},
+          {name:'Pendik Marmaray',dist:'2 km'},
+          {name:'Hızlı Feribot (Yalova)',dist:'3,5 km'},
+          {name:'Sabiha Gökçen Havalimanı',dist:'10 km'},
+          {name:'TEM Otoyolu',dist:'10 km'}
+        ],
+        saglik:[
+          {name:'Bölge Hastanesi',dist:'1 km'},
+          {name:'VM Medical Park',dist:'2 km'},
+          {name:'Medipol Üniversite Hastanesi',dist:'2 km'},
+          {name:'Şifa Hastanesi',dist:'2 km'},
+          {name:'Marmara Eğitim Araştırma Hast.',dist:'2,5 km'},
+          {name:'Yüzyıl Hastanesi',dist:'3 km'}
+        ],
+        egitim:[
+          {name:'Uğur Okulları',dist:'3 km'},
+          {name:'Gedik Üniversitesi',dist:'3,5 km'},
+          {name:'Bahçeşehir Koleji',dist:'6 km'},
+          {name:'İTÜ Tuzla Denizcilik Kampüsü',dist:'12 km'},
+          {name:'Gebze Teknik Üniversitesi',dist:'14 km'},
+          {name:'Sabancı Üniversitesi',dist:'17 km'}
+        ],
+        yasam:[
+          {name:'Millet Bahçesi',dist:'komşu'},
+          {name:'Pendik Sahil',dist:'yakın'},
+          {name:'Aydos Ormanı',dist:'yakın'},
+          {name:'Viaport Marina',dist:'AVM'},
+          {name:'Neomarin',dist:'AVM'},
+          {name:'Pendorya',dist:'AVM'}
+        ]
+      }
+    },
+    life:{
+      title:'Eve Dönmenin Yeni Hali',
+      sub:'Süs havuzlarından çocuk oyun alanlarına, 35.000 m²\'lik peyzajda kurulan bir yaşam.'
+    },
+    form:{
+      eyebrow:'İletişim', title:'Ayrıcalıklı Yaşamı Keşfedin',
+      sub:'Formu doldurun; size özel bilgilendirme ve güncel fiyat listesi için sizi arayalım.',
+      name:'Ad Soyad', namePh:'Adınız ve soyadınız',
+      phone:'Telefon', phonePh:'05XX XXX XX XX',
+      type:'İlgilenilen Daire Tipi', typePh:'Seçiniz',
+      typeOptions:['2+1','3+1','3.5+1','4+1','Dubleks'],
+      msg:'Mesaj', msgHint:'(opsiyonel)', msgPh:'Eklemek istedikleriniz...',
+      consent:'Kişisel verilerimin bilgilendirme amacıyla işlenmesine onay veriyorum.',
+      cta:'Bilgi Talep Et',
+      phoneLabel:'Telefon', phoneVal:'+90 216 000 00 00',
+      waLabel:'WhatsApp', waVal:'+90 555 000 00 00',
+      addrLabel:'Adres', addrVal:'Pendik, İstanbul',
+      success:'Teşekkürler!',
+      successSub:'Talebiniz alındı. Kısa süre içinde sizinle iletişime geçeceğiz.',
+      successAgain:'Yeni Talep Oluştur',
+      errName:'Lütfen adınızı girin.',
+      errPhone:'Geçerli bir telefon numarası girin.',
+      errConsent:'Devam etmek için onay vermeniz gerekir.'
+    },
+    footer:{
+      dev:'KİLER GYO & İLBANK ortaklığı',
+      rights:'© 2026 Referans Pendik. Tüm hakları saklıdır.',
+      disclaimer:'Görseller ve alanlar temsilidir.'
+    }
+  },
+  en: {
+    nav:{cta:'Get Info',links:[
+      {label:'Project',id:'highlights'},{label:'Residences',id:'apartments'},
+      {label:'Location',id:'location'},{label:'Lifestyle',id:'lifestyle'},{label:'Contact',id:'contact'}
+    ]},
+    hero:{
+      eyebrow:'Pendik · İstanbul',
+      line1:'In the Heart of Nature,', line2:'the Calm of the Sea',
+      cta:'Get Info', cta2:'Explore Project', scroll:'Explore',
+      stats:[{num:'686',label:'Units'},{num:'35,000 m²',label:'Landscape'},{num:'Sea',label:'View'}]
+    },
+    hl:{
+      eyebrow:'Inside the City, Embraced by Nature',
+      title:'Where greenery, the sea and the marina meet',
+      sub:'In Turkey\'s first planned settlement district — woodland, a nation\'s garden and marina views make every day calm.',
+      cards:[
+        {icon:'ph-tree',title:'Gözdağı Woodland',desc:'A woodland reserve right beside your home — for morning walks and fresh air.'},
+        {icon:'ph-flower-lotus',title:'Nation\'s Garden',desc:'Vast lawns, rose and fruit gardens — time together for the whole family.'},
+        {icon:'ph-sailboat',title:'Marina Views',desc:'Unmatched views of the islands and sea, before you from your balcony every day.'}
+      ]
+    },
+    apt:{
+      title:'A Home Made for You',
+      sub:'From 2+1 to duplex homes — spacious plans for every way of living.',
+      cta:'View Details', note:'*Stated areas are representative.'
+    },
+    loc:{
+      title:'Everything Right Beside You',
+      sub:'Metro, the coast, schools and healthcare — all reachable within minutes.',
+      mapNote:'Pendik, İstanbul',
+      tabLabels:{ulasim:'Transport',saglik:'Health',egitim:'Education',yasam:'Lifestyle'},
+      items:{
+        ulasim:[
+          {name:'M4 Metro (Kadıköy–Sabiha Gökçen)',dist:'50 m'},
+          {name:'Bus & Minibus Stop',dist:'50 m'},
+          {name:'E-5 Highway',dist:'50 m'},
+          {name:'Pendik Marmaray',dist:'2 km'},
+          {name:'Fast Ferry (Yalova)',dist:'3.5 km'},
+          {name:'Sabiha Gökçen Airport',dist:'10 km'},
+          {name:'TEM Motorway',dist:'10 km'}
+        ],
+        saglik:[
+          {name:'District Hospital',dist:'1 km'},
+          {name:'VM Medical Park',dist:'2 km'},
+          {name:'Medipol University Hospital',dist:'2 km'},
+          {name:'Şifa Hospital',dist:'2 km'},
+          {name:'Marmara Research Hospital',dist:'2.5 km'},
+          {name:'Yüzyıl Hospital',dist:'3 km'}
+        ],
+        egitim:[
+          {name:'Uğur Schools',dist:'3 km'},
+          {name:'Gedik University',dist:'3.5 km'},
+          {name:'Bahçeşehir College',dist:'6 km'},
+          {name:'İTÜ Tuzla Maritime Campus',dist:'12 km'},
+          {name:'Gebze Technical University',dist:'14 km'},
+          {name:'Sabancı University',dist:'17 km'}
+        ],
+        yasam:[
+          {name:'Nation\'s Garden',dist:'next door'},
+          {name:'Pendik Coast',dist:'nearby'},
+          {name:'Aydos Forest',dist:'nearby'},
+          {name:'Viaport Marina',dist:'Mall'},
+          {name:'Neomarin',dist:'Mall'},
+          {name:'Pendorya',dist:'Mall'}
+        ]
+      }
+    },
+    life:{
+      title:'A New Way to Come Home',
+      sub:'From ornamental pools to children\'s playgrounds — a life set within 35,000 m² of landscape.'
+    },
+    form:{
+      eyebrow:'Contact', title:'Discover the Privileged Life',
+      sub:'Fill in the form and we\'ll call you with tailored details and the current price list.',
+      name:'Full Name', namePh:'Your full name',
+      phone:'Phone', phonePh:'+90 5XX XXX XX XX',
+      type:'Apartment Type of Interest', typePh:'Select',
+      typeOptions:['2+1','3+1','3.5+1','4+1','Duplex'],
+      msg:'Message', msgHint:'(optional)', msgPh:'Anything you\'d like to add...',
+      consent:'I consent to the processing of my personal data for information purposes.',
+      cta:'Request Information',
+      phoneLabel:'Phone', phoneVal:'+90 216 000 00 00',
+      waLabel:'WhatsApp', waVal:'+90 555 000 00 00',
+      addrLabel:'Address', addrVal:'Pendik, İstanbul',
+      success:'Thank you!',
+      successSub:'Your request has been received. We\'ll be in touch with you shortly.',
+      successAgain:'Make a New Request',
+      errName:'Please enter your name.',
+      errPhone:'Please enter a valid phone number.',
+      errConsent:'You must give consent to continue.'
+    },
+    footer:{
+      dev:'A KİLER GYO & İLBANK partnership',
+      rights:'© 2026 Referans Pendik. All rights reserved.',
+      disclaimer:'Images and areas are representative.'
+    }
+  }
+};
+
+const APTS = [
+  {type:'2+1',size:'92 m²',tr:'Genç çiftler ve ilk evler için ideal bir başlangıç.',en:'An ideal start for young couples and first homes.'},
+  {type:'3+1',size:'128 m²',tr:'Büyüyen aileler için ferah ve dengeli bir plan.',en:'A spacious, balanced plan for growing families.'},
+  {type:'3.5+1',size:'156 m²',tr:'Ekstra çalışma ya da çocuk odasıyla esnek yaşam.',en:'Flexible living with an extra study or kids\' room.'},
+  {type:'4+1',size:'184 m²',tr:'Geniş aileler için cömert ve konforlu alanlar.',en:'Generous, comfortable space for larger families.'},
+  {type:'Dubleks',size:'232 m²',tr:'İki katlı, özel teraslı en seçkin yaşam tarzı.',en:'Two-storey living with a private terrace.'}
+];
+
+const LIFE = [
+  {c:2,r:2,tr:'Süs Havuzları',en:'Ornamental Pools'},
+  {c:2,r:1,tr:'35.000 m² Peyzaj',en:'35,000 m² Landscape'},
+  {c:1,r:1,tr:'Açık Hava Spor',en:'Outdoor Fitness'},
+  {c:1,r:1,tr:'Çocuk Oyun Alanı',en:'Children\'s Playground'},
+  {c:2,r:1,tr:'Gölet & Yürüyüş Parkuru',en:'Pond & Walking Trail'},
+  {c:2,r:1,tr:'Gül & Meyve Bahçesi',en:'Rose & Fruit Garden'}
+];
+
+const TABS = ['ulasim','saglik','egitim','yasam'];
+
+// ── State ─────────────────────────────────────────────────────────────────
+
+let lang = 'tr';
+let locTab = 'ulasim';
+let formState = {name:'',phone:'',type:'',message:'',consent:false};
+let formErrors = {};
+let submitted = false;
+let observer = null;
+
+// ── Helpers ───────────────────────────────────────────────────────────────
+
+function t(key) {
+  return key.split('.').reduce((o, k) => (o && o[k] !== undefined) ? o[k] : '', I18N[lang]);
+}
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function setText(id, val) {
+  const el = document.getElementById(id);
+  if (el && typeof val === 'string') el.textContent = val;
+}
+
+// ── Language toggle ───────────────────────────────────────────────────────
+
+function setLang(newLang) {
+  lang = newLang;
+  document.getElementById('btn-tr').style.opacity = lang === 'tr' ? '1' : '.45';
+  document.getElementById('btn-en').style.opacity = lang === 'en' ? '1' : '.45';
+  applyStaticText();
+  renderNavLinks();
+  renderHeroStats();
+  renderHlCards(true);
+  renderApartments(true);
+  renderLocTabs();
+  renderLocItems();
+  renderLifeGallery(true);
+  renderFooterLinks();
+  if (!submitted) renderForm();
+}
+
+// ── Static text ───────────────────────────────────────────────────────────
+
+function applyStaticText() {
+  setText('nav-cta-btn', t('nav.cta'));
+  setText('hero-eyebrow', t('hero.eyebrow'));
+  setText('hero-line1', t('hero.line1'));
+  setText('hero-line2', t('hero.line2'));
+  setText('hero-cta1', t('hero.cta'));
+  setText('hero-cta2', t('hero.cta2'));
+  setText('hero-scroll', t('hero.scroll'));
+  setText('hl-eyebrow', t('hl.eyebrow'));
+  setText('hl-title', t('hl.title'));
+  setText('hl-sub', t('hl.sub'));
+  setText('apt-title', t('apt.title'));
+  setText('apt-sub', t('apt.sub'));
+  setText('apt-note', t('apt.note'));
+  setText('loc-title', t('loc.title'));
+  setText('loc-sub', t('loc.sub'));
+  setText('loc-map-note', t('loc.mapNote'));
+  setText('life-title', t('life.title'));
+  setText('life-sub', t('life.sub'));
+  setText('form-eyebrow', t('form.eyebrow'));
+  setText('form-title', t('form.title'));
+  setText('form-sub', t('form.sub'));
+  setText('form-phone-label', t('form.phoneLabel'));
+  setText('form-phone-val', t('form.phoneVal'));
+  setText('form-wa-label', t('form.waLabel'));
+  setText('form-wa-val', t('form.waVal'));
+  setText('form-addr-label', t('form.addrLabel'));
+  setText('form-addr-val', t('form.addrVal'));
+  setText('footer-dev', t('footer.dev'));
+  setText('footer-rights', t('footer.rights'));
+  setText('footer-disclaimer', t('footer.disclaimer'));
+}
+
+// ── Dynamic renders ───────────────────────────────────────────────────────
+
+function renderNavLinks() {
+  const links = t('nav.links');
+  document.getElementById('nav-links').innerHTML =
+    links.map(l => `<a onclick="scrollToSection('${l.id}')">${esc(l.label)}</a>`).join('');
+}
+
+function renderHeroStats() {
+  document.getElementById('hero-stats').innerHTML =
+    t('hero.stats').map(s => `
+      <div class="hero-stat">
+        <span class="stat-num">${esc(s.num)}</span>
+        <span class="stat-label">${esc(s.label)}</span>
+      </div>`).join('');
+}
+
+function renderHlCards(instant = false) {
+  const el = document.getElementById('hl-cards');
+  el.innerHTML = t('hl.cards').map(c => `
+    <div class="hl-card" data-reveal>
+      <i class="ph-light ${c.icon}"></i>
+      <h3>${esc(c.title)}</h3>
+      <p>${esc(c.desc)}</p>
+    </div>`).join('');
+  if (instant) el.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('visible'));
+  else observeAll(el.querySelectorAll('[data-reveal]'));
+}
+
+function renderApartments(instant = false) {
+  const cta = t('apt.cta');
+  const el = document.getElementById('apt-scroller');
+  el.innerHTML = APTS.map((a, i) => `
+    <div class="apt-card" data-reveal>
+      <div class="apt-img">
+        <i class="ph-light ph-floor-plan"></i>
+        <span class="apt-img-label">${esc(a.type)} — Kat Planı</span>
+      </div>
+      <div class="apt-body">
+        <div class="apt-type-row">
+          <span class="apt-type">${esc(a.type)}</span>
+          <span class="apt-size">${esc(a.size)}</span>
+        </div>
+        <p class="apt-desc">${esc(a[lang])}</p>
+        <button class="apt-cta" onclick="scrollToSection('contact')">
+          ${esc(cta)} <i class="ph ph-arrow-right"></i>
+        </button>
+      </div>
+    </div>`).join('');
+  if (instant) el.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('visible'));
+  else observeAll(el.querySelectorAll('[data-reveal]'));
+}
+
+function renderLocTabs() {
+  const labels = t('loc.tabLabels');
+  document.getElementById('loc-tabs').innerHTML =
+    TABS.map(k => `
+      <button class="loc-tab${locTab === k ? ' active' : ''}" onclick="setLocTab('${k}')">
+        ${esc(labels[k])}
+      </button>`).join('');
+}
+
+function renderLocItems() {
+  const items = t('loc.items')[locTab] || [];
+  document.getElementById('loc-items').innerHTML =
+    items.map(row => `
+      <div class="loc-item">
+        <span class="loc-item-name">${esc(row.name)}</span>
+        <span class="loc-item-dist">${esc(row.dist)}</span>
+      </div>`).join('');
+}
+
+function setLocTab(tab) {
+  locTab = tab;
+  renderLocTabs();
+  renderLocItems();
+}
+
+function renderLifeGallery(instant = false) {
+  const el = document.getElementById('life-gallery');
+  el.innerHTML = LIFE.map(item => `
+    <div class="life-item" style="grid-column:span ${item.c};grid-row:span ${item.r}" data-reveal>
+      <div class="life-item-bg"></div>
+      <div class="life-overlay"></div>
+      <span class="life-caption">${esc(item[lang])}</span>
+    </div>`).join('');
+  if (instant) el.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('visible'));
+  else observeAll(el.querySelectorAll('[data-reveal]'));
+}
+
+function renderFooterLinks() {
+  document.getElementById('footer-links').innerHTML =
+    t('nav.links').map(l => `<a onclick="scrollToSection('${l.id}')">${esc(l.label)}</a>`).join('');
+}
+
+function renderForm() {
+  const f = t('form');
+  const el = document.getElementById('form-col');
+  if (submitted) {
+    el.innerHTML = `
+      <div class="form-success">
+        <i class="ph-fill ph-check-circle"></i>
+        <h3>${esc(f.success)}</h3>
+        <p>${esc(f.successSub)}</p>
+        <button class="btn-again" onclick="resetForm()">${esc(f.successAgain)}</button>
+      </div>`;
+    return;
+  }
+  const nameErr = formErrors.name ? `<span class="form-error">${esc(formErrors.name)}</span>` : '';
+  const phoneErr = formErrors.phone ? `<span class="form-error">${esc(formErrors.phone)}</span>` : '';
+  const consentErr = formErrors.consent ? `<div class="form-consent-error">${esc(formErrors.consent)}</div>` : '';
+  const opts = f.typeOptions.map(o =>
+    `<option value="${esc(o)}"${formState.type === o ? ' selected' : ''}>${esc(o)}</option>`).join('');
+  el.innerHTML = `
+    <div class="form-box">
+      <div class="form-group">
+        <label class="form-label">${esc(f.name)}</label>
+        <input type="text" class="form-input" id="f-name" placeholder="${esc(f.namePh)}"
+          value="${esc(formState.name)}" oninput="formState.name=this.value;delete formErrors.name">
+        ${nameErr}
+      </div>
+      <div class="form-group">
+        <label class="form-label">${esc(f.phone)}</label>
+        <input type="tel" class="form-input" id="f-phone" placeholder="${esc(f.phonePh)}"
+          value="${esc(formState.phone)}" oninput="formState.phone=this.value;delete formErrors.phone">
+        ${phoneErr}
+      </div>
+      <div class="form-group">
+        <label class="form-label">${esc(f.type)}</label>
+        <select class="form-select" onchange="formState.type=this.value">
+          <option value="">${esc(f.typePh)}</option>${opts}
+        </select>
+      </div>
+      <div class="form-group" style="margin-bottom:22px">
+        <label class="form-label">${esc(f.msg)} <span class="hint">${esc(f.msgHint)}</span></label>
+        <textarea class="form-textarea" rows="3" placeholder="${esc(f.msgPh)}"
+          oninput="formState.message=this.value">${esc(formState.message)}</textarea>
+      </div>
+      <label class="form-consent-row">
+        <input type="checkbox" ${formState.consent ? 'checked' : ''}
+          onchange="formState.consent=this.checked;delete formErrors.consent">
+        <span class="form-consent-text">${esc(f.consent)}</span>
+      </label>
+      ${consentErr}
+      <button class="btn-submit" onclick="onSubmit()">${esc(f.cta)} <i class="ph ph-arrow-right"></i></button>
+    </div>`;
+}
+
+// ── Form submit ───────────────────────────────────────────────────────────
+
+function onSubmit() {
+  const f = t('form');
+  formErrors = {};
+  if (!formState.name.trim()) formErrors.name = f.errName;
+  if ((formState.phone || '').replace(/\D/g,'').length < 10) formErrors.phone = f.errPhone;
+  if (!formState.consent) formErrors.consent = f.errConsent;
+  if (Object.keys(formErrors).length) { renderForm(); return; }
+  submitted = true;
+  renderForm();
+}
+
+function resetForm() {
+  submitted = false;
+  formState = {name:'',phone:'',type:'',message:'',consent:false};
+  formErrors = {};
+  renderForm();
+}
+
+// ── Scroll helpers ────────────────────────────────────────────────────────
+
+function scrollToTop() { window.scrollTo({top:0,behavior:'smooth'}); }
+
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  window.scrollTo({top: el.getBoundingClientRect().top + window.scrollY - 68, behavior:'smooth'});
+}
+
+function aptScroll(dir) {
+  const el = document.getElementById('apt-scroller');
+  if (el) el.scrollBy({left: dir * 330, behavior:'smooth'});
+}
+
+// ── Nav + parallax scroll ─────────────────────────────────────────────────
+
+let _scrolled = null;
+let _ticking = false;
+
+function applyScroll() {
+  const y = window.scrollY || 0;
+  const nav = document.getElementById('nav');
+  const solid = y > 120;
+  if (solid !== _scrolled) {
+    _scrolled = solid;
+    nav.classList.toggle('scrolled', solid);
+  }
+  const bg = document.getElementById('hero-bg');
+  if (bg && y < window.innerHeight * 1.2) {
+    bg.style.transform = `translate3d(0,${y * 0.22}px,0) scale(1.06)`;
+  }
+}
+
+window.addEventListener('scroll', () => {
+  if (_ticking) return;
+  _ticking = true;
+  requestAnimationFrame(() => { _ticking = false; applyScroll(); });
+}, {passive:true});
+
+// ── Reveal animation ──────────────────────────────────────────────────────
+
+function observeAll(els) {
+  if (!observer) return;
+  const arr = Array.from(els);
+  arr.forEach((el, i) => {
+    const sibs = Array.from(el.parentElement?.children || []).filter(c => c.hasAttribute('data-reveal'));
+    el.style.transitionDelay = (Math.max(0, sibs.indexOf(el)) * 80) + 'ms';
+    observer.observe(el);
+  });
+}
+
+function initReveal() {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('visible'));
+    return;
+  }
+  observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -7% 0px'});
+  observeAll(document.querySelectorAll('[data-reveal]'));
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────
+
+function init() {
+  applyStaticText();
+  renderNavLinks();
+  renderHeroStats();
+  renderHlCards();
+  renderApartments();
+  renderLocTabs();
+  renderLocItems();
+  renderLifeGallery();
+  renderFooterLinks();
+  renderForm();
+  initReveal();
+  applyScroll();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+</script>
+</body>
+</html>
