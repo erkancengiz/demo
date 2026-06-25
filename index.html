@@ -263,6 +263,55 @@ h2{
 }
 @media(max-width:480px){.life-gallery{grid-template-columns:1fr!important}}
 
+/* ── Hero ticker ────────────────────────────────────────────────────────── */
+.hero-ticker{
+  overflow:hidden;margin-bottom:32px;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 12%,#000 88%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0%,#000 12%,#000 88%,transparent 100%);
+}
+.hero-ticker-track{
+  display:flex;gap:0;white-space:nowrap;
+  animation:rpTicker 28s linear infinite;
+  width:max-content;
+}
+.hero-ticker-track:hover{animation-play-state:paused}
+.hero-ticker-item{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(16px,1.9vw,22px);color:rgba(232,200,154,.82);
+  letter-spacing:.01em;padding:0 40px;
+}
+.hero-ticker-sep{color:rgba(192,136,60,.5);padding:0;font-style:normal}
+@keyframes rpTicker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── Architecture ───────────────────────────────────────────────────────── */
+#architecture{background:#e7dfce;padding:clamp(80px,12vh,140px) 0}
+.arch-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(40px,6vw,80px);align-items:center;
+}
+@media(max-width:760px){.arch-grid{grid-template-columns:1fr}}
+.arch-img{border-radius:4px;overflow:hidden;aspect-ratio:4/3}
+.arch-img img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ── Poetry ─────────────────────────────────────────────────────────────── */
+#poetry{background:#2b3a31;padding:clamp(70px,10vh,110px) 0;text-align:center}
+.poetry-label{
+  font-size:11px;letter-spacing:.38em;text-transform:uppercase;
+  color:#e8c89a;font-weight:600;margin-bottom:clamp(28px,4vh,44px);
+  display:block;
+}
+.poetry-lines{
+  list-style:none;padding:0;margin:0;
+  display:flex;flex-direction:column;gap:clamp(8px,1.2vh,14px);
+}
+.poetry-lines li{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(20px,3vw,36px);font-weight:400;
+  color:rgba(246,241,231,.88);line-height:1.15;
+  transition:color .3s;
+}
+.poetry-lines li:hover{color:#e8c89a}
+
 /* ── Feature Banner ─────────────────────────────────────────────────────── */
 #feature-banner{width:100%;height:clamp(260px,38vh,480px);overflow:hidden;position:relative}
 #feature-banner img{width:100%;height:100%;object-fit:cover;display:block}
@@ -449,6 +498,9 @@ footer{background:#1a241e;color:rgba(241,236,225,.7);padding:48px 0}
         <span class="h1-line2" id="hero-line2"></span>
       </h1>
       <div class="hero-stats" id="hero-stats"></div>
+      <div class="hero-ticker" id="hero-ticker-wrap">
+        <div class="hero-ticker-track" id="hero-ticker-track"></div>
+      </div>
       <div class="hero-ctas">
         <button class="btn-primary" onclick="scrollToSection('contact')">
           <span id="hero-cta1"></span><i class="ph ph-arrow-right"></i>
@@ -497,6 +549,25 @@ footer{background:#1a241e;color:rgba(241,236,225,.7);padding:48px 0}
   <div class="section-wrap"><p class="apt-note" id="apt-note"></p></div>
 </section>
 
+<!-- ARCHITECTURE -->
+<section id="architecture">
+  <div class="section-wrap">
+    <div class="arch-grid" data-reveal>
+      <div class="arch-img">
+        <img src="project/uploads/galeri18.jpg" alt="Az kat çok konfor" loading="lazy">
+      </div>
+      <div>
+        <div class="section-eyebrow">
+          <span class="eyebrow-bar-sm"></span>
+          <span class="eyebrow-text-sm" style="color:#a16f2c" id="arch-eyebrow"></span>
+        </div>
+        <h2 id="arch-title"></h2>
+        <p class="section-sub" id="arch-sub"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- LOCATION -->
 <section id="location">
   <div class="section-wrap">
@@ -520,6 +591,14 @@ footer{background:#1a241e;color:rgba(241,236,225,.7);padding:48px 0}
         <div id="loc-items"></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- POETRY -->
+<section id="poetry">
+  <div class="section-wrap">
+    <span class="poetry-label" id="poetry-label"></span>
+    <ul class="poetry-lines" id="poetry-lines"></ul>
   </div>
 </section>
 
@@ -612,12 +691,13 @@ const I18N = {
   tr: {
     nav: { cta:'Bilgi Al', links:[
       {label:'Proje',id:'highlights'},{label:'Daireler',id:'apartments'},
-      {label:'Konum',id:'location'},{label:'Yaşam',id:'lifestyle'},{label:'İletişim',id:'contact'}
+      {label:'Mimari',id:'architecture'},{label:'Konum',id:'location'},{label:'Yaşam',id:'lifestyle'},{label:'İletişim',id:'contact'}
     ]},
     hero: {
       eyebrow:'Pendik · İstanbul',
       line1:'Doğanın Kalbinde,', line2:'Denizin Huzurunda',
       cta:'Bilgi Al', cta2:'Projeyi Keşfet', scroll:'Keşfet',
+      taglines:['Arkanızda Gözdağı Korusu...','Bitişiğinizde Millet Bahçesi...','Manzaranız Deniz...','Martıların Sesi...','Yeşilin Kokusu...','Dört Mevsim Tatil Hissi...'],
       stats:[{num:'686',label:'Ünite'},{num:'35.000 m²',label:'Peyzaj'},{num:'Deniz',label:'Manzarası'}]
     },
     hl: {
@@ -637,44 +717,68 @@ const I18N = {
     },
     loc:{
       title:'Her Şey Yanı Başınızda',
-      sub:'Metro, sahil, okullar ve sağlık kuruluşları; hepsi dakikalar içinde ulaşılabilir.',
+      sub:'Türkiye\'nin ilk planlı yerleşim bölgesi Pendik\'te metro, sahil, okullar ve sağlık kuruluşları; hepsi dakikalar içinde ulaşılabilir.',
       mapNote:'Pendik, İstanbul',
-      tabLabels:{ulasim:'Ulaşım',saglik:'Sağlık',egitim:'Eğitim',yasam:'Yaşam'},
+      tabLabels:{ulasim:'Ulaşım',saglik:'Sağlık',egitim:'Eğitim',avm:'AVM',yasam:'Yaşam'},
       items:{
         ulasim:[
           {name:'M4 Metro (Kadıköy–Sabiha Gökçen)',dist:'50 m'},
           {name:'Otobüs & Minibüs Durağı',dist:'50 m'},
           {name:'E-5 Karayolu',dist:'50 m'},
           {name:'Pendik Marmaray',dist:'2 km'},
+          {name:'Pendik Marina',dist:'3 km'},
           {name:'Hızlı Feribot (Yalova)',dist:'3,5 km'},
+          {name:'Tuzla Marina',dist:'5 km'},
           {name:'Sabiha Gökçen Havalimanı',dist:'10 km'},
-          {name:'TEM Otoyolu',dist:'10 km'}
+          {name:'TEM Otoyolu',dist:'10 km'},
+          {name:'İstanbul Havalimanı',dist:'65 km'}
         ],
         saglik:[
-          {name:'Bölge Hastanesi',dist:'1 km'},
           {name:'VM Medical Park',dist:'2 km'},
-          {name:'Medipol Üniversite Hastanesi',dist:'2 km'},
+          {name:'Medipol Üni. Hastanesi',dist:'2 km'},
           {name:'Şifa Hastanesi',dist:'2 km'},
-          {name:'Marmara Eğitim Araştırma Hast.',dist:'2,5 km'},
-          {name:'Yüzyıl Hastanesi',dist:'3 km'}
+          {name:'Yüzyıl Hastanesi',dist:'2 km'},
+          {name:'Pendik Devlet Hastanesi',dist:'3 km'},
+          {name:'Anadolu Sağlık Merkezi',dist:'4 km'},
+          {name:'Tuzla Devlet Hastanesi',dist:'7 km'},
+          {name:'Gebze Fatih Devlet Hastanesi',dist:'15 km'}
         ],
         egitim:[
-          {name:'Uğur Okulları',dist:'3 km'},
-          {name:'Gedik Üniversitesi',dist:'3,5 km'},
-          {name:'Bahçeşehir Koleji',dist:'6 km'},
-          {name:'İTÜ Tuzla Denizcilik Kampüsü',dist:'12 km'},
+          {name:'Tev İnanç Türkeş Özel Lisesi',dist:'4 km'},
+          {name:'Bahçeşehir Koleji Pendik',dist:'6 km'},
+          {name:'Bilfen (Kurtköy)',dist:'6 km'},
+          {name:'Koç Lisesi (Tuzla)',dist:'8 km'},
+          {name:'Terrakki Vakfı Okulları (Tuzla)',dist:'8 km'},
           {name:'Gebze Teknik Üniversitesi',dist:'14 km'},
-          {name:'Sabancı Üniversitesi',dist:'17 km'}
+          {name:'İTÜ (Gebze)',dist:'14 km'},
+          {name:'Sabancı Üniversitesi (Tuzla)',dist:'17 km'}
+        ],
+        avm:[
+          {name:'Pendorya AVM',dist:'4 km'},
+          {name:'Neomarin AVM',dist:'5 km'},
+          {name:'Viaport Marina',dist:'5 km'},
+          {name:'Hisar Alışveriş Merkezi',dist:'6 km'},
+          {name:'Viaport Asya',dist:'7 km'},
+          {name:'Tuzla Park AVM',dist:'7 km'},
+          {name:'Optimum Meydan',dist:'8 km'}
         ],
         yasam:[
           {name:'Millet Bahçesi',dist:'komşu'},
+          {name:'Gözdağı Korusu',dist:'komşu'},
           {name:'Pendik Sahil',dist:'yakın'},
           {name:'Aydos Ormanı',dist:'yakın'},
-          {name:'Viaport Marina',dist:'AVM'},
-          {name:'Neomarin',dist:'AVM'},
-          {name:'Pendorya',dist:'AVM'}
+          {name:'Kartal Sahili',dist:'5 km'}
         ]
       }
+    },
+    arch:{
+      eyebrow:'Mimari',
+      title:'Az kat, çok konfor',
+      sub:'Bölgenin dokusuna saygı duyan az katlı tasarımıyla hem çevreye duyarlı hem de sizi güvende hissettirecek bir mimari ile hayata geçen Referans Pendik; herkesin özlediği mahalle sıcaklığını modern estetikle buluşturur. Burada mutlu, huzurlu ve güven içinde yaşayacaksınız.'
+    },
+    poetry:{
+      label:'Referans Pendik',
+      lines:['Arkanızda Gözdağı Korusu...','Bitişiğinizde Millet Bahçesi...','Manzaranız Deniz...','Martıların Sesi...','Yeşilin Kokusu...','Dört Mevsim Tatil Hissi...']
     },
     life:{
       title:'Eve Dönmenin Yeni Hali',
@@ -709,12 +813,13 @@ const I18N = {
   en: {
     nav:{cta:'Get Info',links:[
       {label:'Project',id:'highlights'},{label:'Residences',id:'apartments'},
-      {label:'Location',id:'location'},{label:'Lifestyle',id:'lifestyle'},{label:'Contact',id:'contact'}
+      {label:'Architecture',id:'architecture'},{label:'Location',id:'location'},{label:'Lifestyle',id:'lifestyle'},{label:'Contact',id:'contact'}
     ]},
     hero:{
       eyebrow:'Pendik · İstanbul',
       line1:'In the Heart of Nature,', line2:'the Calm of the Sea',
       cta:'Get Info', cta2:'Explore Project', scroll:'Explore',
+      taglines:['Whispering Gözdağı Grove Behind You...','Community Garden Next Door...','Seaside Serenity in Your View...','Echoes of Seagulls...','Aroma of Lush Green...','Year-Round Vacation Vibes...'],
       stats:[{num:'686',label:'Units'},{num:'35,000 m²',label:'Landscape'},{num:'Sea',label:'View'}]
     },
     hl:{
@@ -734,44 +839,68 @@ const I18N = {
     },
     loc:{
       title:'Everything Right Beside You',
-      sub:'Metro, the coast, schools and healthcare — all reachable within minutes.',
+      sub:'In Pendik — Turkey\'s pioneering planned residential zone — metro, the coast, schools and healthcare are all within minutes.',
       mapNote:'Pendik, İstanbul',
-      tabLabels:{ulasim:'Transport',saglik:'Health',egitim:'Education',yasam:'Lifestyle'},
+      tabLabels:{ulasim:'Transport',saglik:'Health',egitim:'Education',avm:'Malls',yasam:'Lifestyle'},
       items:{
         ulasim:[
           {name:'M4 Metro (Kadıköy–Sabiha Gökçen)',dist:'50 m'},
           {name:'Bus & Minibus Stop',dist:'50 m'},
           {name:'E-5 Highway',dist:'50 m'},
           {name:'Pendik Marmaray',dist:'2 km'},
+          {name:'Pendik Marina',dist:'3 km'},
           {name:'Fast Ferry (Yalova)',dist:'3.5 km'},
+          {name:'Tuzla Marina',dist:'5 km'},
           {name:'Sabiha Gökçen Airport',dist:'10 km'},
-          {name:'TEM Motorway',dist:'10 km'}
+          {name:'TEM Motorway',dist:'10 km'},
+          {name:'İstanbul Airport',dist:'65 km'}
         ],
         saglik:[
-          {name:'District Hospital',dist:'1 km'},
           {name:'VM Medical Park',dist:'2 km'},
           {name:'Medipol University Hospital',dist:'2 km'},
           {name:'Şifa Hospital',dist:'2 km'},
-          {name:'Marmara Research Hospital',dist:'2.5 km'},
-          {name:'Yüzyıl Hospital',dist:'3 km'}
+          {name:'Yüzyıl Hospital',dist:'2 km'},
+          {name:'Pendik State Hospital',dist:'3 km'},
+          {name:'Anadolu Health Centre',dist:'4 km'},
+          {name:'Tuzla State Hospital',dist:'7 km'},
+          {name:'Gebze Fatih State Hospital',dist:'15 km'}
         ],
         egitim:[
-          {name:'Uğur Schools',dist:'3 km'},
-          {name:'Gedik University',dist:'3.5 km'},
-          {name:'Bahçeşehir College',dist:'6 km'},
-          {name:'İTÜ Tuzla Maritime Campus',dist:'12 km'},
+          {name:'Tev İnanç Türkeş Private High School',dist:'4 km'},
+          {name:'Bahçeşehir College Pendik',dist:'6 km'},
+          {name:'Bilfen (Kurtköy)',dist:'6 km'},
+          {name:'Koç High School (Tuzla)',dist:'8 km'},
+          {name:'Terrakki Foundation Schools (Tuzla)',dist:'8 km'},
           {name:'Gebze Technical University',dist:'14 km'},
-          {name:'Sabancı University',dist:'17 km'}
+          {name:'İTÜ Gebze',dist:'14 km'},
+          {name:'Sabancı University (Tuzla)',dist:'17 km'}
+        ],
+        avm:[
+          {name:'Pendorya Mall',dist:'4 km'},
+          {name:'Neomarin Mall',dist:'5 km'},
+          {name:'Viaport Marina',dist:'5 km'},
+          {name:'Hisar Shopping Centre',dist:'6 km'},
+          {name:'Viaport Asya',dist:'7 km'},
+          {name:'Tuzla Park Mall',dist:'7 km'},
+          {name:'Optimum Meydan',dist:'8 km'}
         ],
         yasam:[
           {name:'Nation\'s Garden',dist:'next door'},
+          {name:'Gözdağı Woodland',dist:'next door'},
           {name:'Pendik Coast',dist:'nearby'},
           {name:'Aydos Forest',dist:'nearby'},
-          {name:'Viaport Marina',dist:'Mall'},
-          {name:'Neomarin',dist:'Mall'},
-          {name:'Pendorya',dist:'Mall'}
+          {name:'Kartal Waterfront',dist:'5 km'}
         ]
       }
+    },
+    arch:{
+      eyebrow:'Architecture',
+      title:'Less floors, more comfort',
+      sub:'Referans Pendik comes alive with an architecture that is not only eco-conscious but also reassuringly low-rise, respecting the local vibe. It merges the nostalgia of neighbourhood warmth with contemporary aesthetics, offering everyone a joyful, tranquil and secure lifestyle.'
+    },
+    poetry:{
+      label:'Referans Pendik',
+      lines:['Whispering Gözdağı Grove Behind You...','Community Garden Next Door...','Seaside Serenity in Your View...','Echoes of Seagulls...','Aroma of Lush Green...','Year-Round Vacation Vibes...']
     },
     life:{
       title:'A New Way to Come Home',
@@ -826,7 +955,7 @@ const LIFE = [
   {img:'galeri19.jpg',c:2,r:1,tr:'Yeşil Alanlar',en:'Green Spaces'},
 ];
 
-const TABS = ['ulasim','saglik','egitim','yasam'];
+const TABS = ['ulasim','saglik','egitim','avm','yasam'];
 
 const HL_IMGS = ['konfor.png','mukemmellikvar.png','ozeldir.png'];
 
@@ -871,10 +1000,13 @@ function setLang(newLang) {
   applyStaticText();
   renderNavLinks();
   renderHeroStats();
+  renderHeroTicker();
   renderHlCards(true);
   renderApartments(true);
+  renderArch();
   renderLocTabs();
   renderLocItems();
+  renderPoetry();
   renderLifeGallery(true);
   renderFooterLinks();
   if (!submitted) renderForm();
@@ -1008,6 +1140,25 @@ function renderLifeGallery(instant = false) {
     </div>`).join('');
   if (instant) el.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('visible'));
   else observeAll(el.querySelectorAll('[data-reveal]'));
+}
+
+function renderHeroTicker() {
+  const items = t('hero.taglines');
+  const doubled = [...items, ...items];
+  document.getElementById('hero-ticker-track').innerHTML =
+    doubled.map(s => `<span class="hero-ticker-item">${esc(s)}</span><span class="hero-ticker-sep">·</span>`).join('');
+}
+
+function renderArch() {
+  setText('arch-eyebrow', t('arch.eyebrow'));
+  setText('arch-title', t('arch.title'));
+  setText('arch-sub', t('arch.sub'));
+}
+
+function renderPoetry() {
+  setText('poetry-label', t('poetry.label'));
+  document.getElementById('poetry-lines').innerHTML =
+    t('poetry.lines').map(l => `<li>${esc(l)}</li>`).join('');
 }
 
 function renderFooterLinks() {
@@ -1222,10 +1373,13 @@ function init() {
   applyStaticText();
   renderNavLinks();
   renderHeroStats();
+  renderHeroTicker();
   renderHlCards();
   renderApartments();
+  renderArch();
   renderLocTabs();
   renderLocItems();
+  renderPoetry();
   renderLifeGallery();
   renderFooterLinks();
   renderForm();
