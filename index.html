@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Referans Pendik — Pendik · İstanbul</title>
+<title>Eksen Prime — Pendik · İstanbul</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -378,40 +378,6 @@ h2{
 #feature-banner{width:100%;height:clamp(260px,38vh,480px);overflow:hidden;position:relative}
 #feature-banner img{width:100%;height:100%;object-fit:cover;display:block}
 
-/* ── Prices ─────────────────────────────────────────────────────────────── */
-#prices{background:#161b13;padding:clamp(80px,12vh,140px) 0}
-#prices h2{color:#f0ebe0}
-.prices-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:14px;margin-top:clamp(36px,5vh,52px);
-}
-.price-card{
-  background:#1c2119;border:1px solid rgba(201,168,76,.18);
-  border-radius:4px;padding:22px 24px;
-  display:flex;flex-direction:column;gap:6px;
-  transition:border-color .3s,transform .25s;
-}
-.price-card:hover{border-color:rgba(201,168,76,.5);transform:translateY(-2px)}
-.price-type{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#f0ebe0}
-.price-amount{font-size:18px;font-weight:700;color:#c9a84c;letter-spacing:.01em}
-.price-sqm{font-size:12px;color:#8a9e90;letter-spacing:.04em}
-.prices-payment{
-  margin-top:clamp(36px,5vh,52px);
-  display:flex;flex-wrap:wrap;gap:16px;justify-content:center;
-}
-.payment-badge{
-  display:flex;align-items:center;gap:14px;
-  background:rgba(201,168,76,.07);
-  border:1px solid rgba(201,168,76,.28);
-  border-radius:3px;padding:18px 28px;
-  min-width:220px;
-}
-.payment-badge i{font-size:24px;color:#c9a84c;flex-shrink:0}
-.payment-badge-text{display:flex;flex-direction:column;gap:2px}
-.payment-badge-val{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#f0ebe0}
-.payment-badge-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8a9e90}
-.prices-note{margin-top:24px;text-align:center;font-size:13px;color:#6a7a6e;letter-spacing:.04em}
-
 /* ── Contact ────────────────────────────────────────────────────────────── */
 #contact{background:#090c08;color:#e8e0d0;padding:clamp(80px,12vh,140px) 0}
 #contact h2{color:#f6f1e7;margin:0 0 20px}
@@ -569,7 +535,7 @@ footer{background:#060808;color:rgba(232,224,208,.65);padding:48px 0}
   <div class="nav-logo" onclick="scrollToTop()">
     <div class="nav-logo-top">
       <span class="nav-logo-diamond">◆</span>
-      <span class="nav-logo-name">Referans <span class="logo-pendik">Pendik</span></span>
+      <span class="nav-logo-name">Eksen Prime</span>
     </div>
     <span class="nav-logo-sub">Pendik · İstanbul</span>
   </div>
@@ -749,26 +715,6 @@ footer{background:#060808;color:rgba(232,224,208,.65);padding:48px 0}
   </div>
 </section>
 
-<!-- GOLD DIVIDER -->
-<div class="gold-divider"></div>
-
-<!-- PRICES -->
-<section id="prices">
-  <div class="section-wrap">
-    <div class="section-head" data-reveal>
-      <div class="section-eyebrow">
-        <span class="eyebrow-bar-sm"></span>
-        <span class="eyebrow-text-sm" style="color:#c9a84c" id="prices-eyebrow"></span>
-      </div>
-      <h2 id="prices-title"></h2>
-      <p class="section-sub" id="prices-sub"></p>
-    </div>
-    <div class="prices-grid" id="prices-grid"></div>
-    <div class="prices-payment" id="prices-payment"></div>
-    <p class="prices-note" id="prices-note"></p>
-  </div>
-</section>
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-wrap">
@@ -813,7 +759,7 @@ footer{background:#060808;color:rgba(232,224,208,.65);padding:48px 0}
 <footer>
   <div class="footer-top">
     <div class="footer-logo">
-      <span class="footer-logo-name">Referans Pendik</span>
+      <span class="footer-logo-name">Eksen Prime</span>
       <span class="footer-logo-sub" id="footer-dev"></span>
     </div>
     <div class="footer-links" id="footer-links"></div>
@@ -849,7 +795,7 @@ const I18N = {
       {label:'Proje',id:'highlights'},{label:'Daireler',id:'apartments'},
       {label:'Vaziyet',id:'vaziyet'},{label:'Mimari',id:'architecture'},
       {label:'Konum',id:'location'},{label:'Yaşam',id:'lifestyle'},
-      {label:'Fiyatlar',id:'prices'},{label:'İletişim',id:'contact'}
+      {label:'İletişim',id:'contact'}
     ]},
     hero: {
       eyebrow:'Pendik · İstanbul',
@@ -957,24 +903,6 @@ const I18N = {
       title:'Eve Dönmenin Yeni Hali',
       sub:'Süs havuzlarından çocuk oyun alanlarına, 35.000 m²\'lik peyzajda kurulan bir yaşam.'
     },
-    prices:{
-      eyebrow:'Fiyat Listesi',
-      title:'Liste Fiyatlarımız',
-      sub:'Güncel fiyat listesi ve ödeme seçenekleri için danışmanlarımızla görüşün.',
-      items:[
-        {type:'2+1 Açık Mutfak',amount:'15.916.000 ₺',sqm:'92 m²'},
-        {type:'2+1 Kapalı Mutfak',amount:'17.216.000 ₺',sqm:'98 m²'},
-        {type:'2,5+1 Kapalı',amount:'24.150.000 ₺',sqm:'128 m²'},
-        {type:'3+1',amount:'24.380.000 ₺',sqm:'128 m²'},
-        {type:'3,5+1',amount:'41.492.000 ₺',sqm:'156 m²'},
-        {type:'4+1',amount:'34.960.000 ₺',sqm:'184 m²'}
-      ],
-      payment:[
-        {val:'24 Ay',label:'Vade İmkânı',icon:'ph-calendar'},
-        {val:'%20',label:'Peşin İndirim',icon:'ph-percent'}
-      ],
-      note:'*Fiyatlar liste fiyatı olup değişiklik gösterebilir. Güncel bilgi için danışmanlarımızla iletişime geçin.'
-    },
     form:{
       eyebrow:'İletişim', title:'Ayrıcalıklı Yaşamı Keşfedin',
       sub:'Formu doldurun; size özel bilgilendirme ve güncel fiyat listesi için sizi arayalım.',
@@ -1006,7 +934,7 @@ const I18N = {
       {label:'Project',id:'highlights'},{label:'Residences',id:'apartments'},
       {label:'Site Plan',id:'vaziyet'},{label:'Architecture',id:'architecture'},
       {label:'Location',id:'location'},{label:'Lifestyle',id:'lifestyle'},
-      {label:'Prices',id:'prices'},{label:'Contact',id:'contact'}
+      {label:'Contact',id:'contact'}
     ]},
     hero:{
       eyebrow:'Pendik · İstanbul',
@@ -1114,24 +1042,6 @@ const I18N = {
       title:'A New Way to Come Home',
       sub:'From ornamental pools to children\'s playgrounds — a life set within 35,000 m² of landscape.'
     },
-    prices:{
-      eyebrow:'Price List',
-      title:'Our List Prices',
-      sub:'Contact our consultants for current pricing and payment options.',
-      items:[
-        {type:'2+1 Open Kitchen',amount:'₺15,916,000',sqm:'92 m²'},
-        {type:'2+1 Closed Kitchen',amount:'₺17,216,000',sqm:'98 m²'},
-        {type:'2.5+1 Closed',amount:'₺24,150,000',sqm:'128 m²'},
-        {type:'3+1',amount:'₺24,380,000',sqm:'128 m²'},
-        {type:'3.5+1',amount:'₺41,492,000',sqm:'156 m²'},
-        {type:'4+1',amount:'₺34,960,000',sqm:'184 m²'}
-      ],
-      payment:[
-        {val:'24 Months',label:'Instalment Available',icon:'ph-calendar'},
-        {val:'20%',label:'Cash Discount',icon:'ph-percent'}
-      ],
-      note:'*Prices are list prices and subject to change. Contact our consultants for current information.'
-    },
     form:{
       eyebrow:'Contact', title:'Discover the Privileged Life',
       sub:'Fill in the form and we\'ll call you with tailored details and the current price list.',
@@ -1233,7 +1143,6 @@ function setLang(newLang) {
   renderLocItems();
   renderPoetry();
   renderLifeGallery(true);
-  renderPrices();
   renderFooterLinks();
   if (!submitted) renderForm();
 }
@@ -1396,33 +1305,6 @@ function renderPoetry() {
   setText('poetry-label', t('poetry.label'));
   document.getElementById('poetry-lines').innerHTML =
     t('poetry.lines').map(l => `<li>${esc(l)}</li>`).join('');
-}
-
-function renderPrices() {
-  setText('prices-eyebrow', t('prices.eyebrow'));
-  setText('prices-title', t('prices.title'));
-  setText('prices-sub', t('prices.sub'));
-  setText('prices-note', t('prices.note'));
-  const grid = document.getElementById('prices-grid');
-  if (grid) {
-    grid.innerHTML = t('prices.items').map(p => `
-      <div class="price-card">
-        <span class="price-type">${esc(p.type)}</span>
-        <span class="price-amount">${esc(p.amount)}</span>
-        <span class="price-sqm">${esc(p.sqm)}</span>
-      </div>`).join('');
-  }
-  const pay = document.getElementById('prices-payment');
-  if (pay) {
-    pay.innerHTML = t('prices.payment').map(p => `
-      <div class="payment-badge">
-        <i class="ph-light ${p.icon}"></i>
-        <div class="payment-badge-text">
-          <span class="payment-badge-val">${esc(p.val)}</span>
-          <span class="payment-badge-label">${esc(p.label)}</span>
-        </div>
-      </div>`).join('');
-  }
 }
 
 function renderFooterLinks() {
@@ -1653,7 +1535,6 @@ function init() {
   renderLocItems();
   renderPoetry();
   renderLifeGallery();
-  renderPrices();
   renderFooterLinks();
   renderForm();
   initReveal();
