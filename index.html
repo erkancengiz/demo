@@ -91,6 +91,12 @@ body{margin:0;font-family:'Manrope',system-ui,sans-serif;background:#0f1310;colo
   padding:0 clamp(20px,5vw,48px) clamp(70px,11vh,120px);
 }
 .hero-inner{max-width:780px}
+.hero-project-badge{display:flex;align-items:center;gap:9px;margin-bottom:18px}
+.hero-project-diamond{font-size:11px;color:#c9a84c}
+.hero-project-name{
+  font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;
+  letter-spacing:.3em;text-transform:uppercase;color:#d4a847;
+}
 .hero-eyebrow{display:flex;align-items:center;gap:13px;margin-bottom:26px}
 .eyebrow-bar{width:36px;height:1px;background:#c9a84c;display:block;flex-shrink:0}
 .eyebrow-label{letter-spacing:.34em;font-size:12px;text-transform:uppercase;color:#d4a847;font-weight:600}
@@ -378,6 +384,26 @@ h2{
 #feature-banner{width:100%;height:clamp(260px,38vh,480px);overflow:hidden;position:relative}
 #feature-banner img{width:100%;height:100%;object-fit:cover;display:block}
 
+/* ── Payment ────────────────────────────────────────────────────────────── */
+#payment{background:#161b13;padding:clamp(80px,12vh,140px) 0;text-align:center}
+#payment h2{color:#f0ebe0}
+.payment-badges{
+  display:flex;flex-wrap:wrap;gap:20px;justify-content:center;
+  margin-top:clamp(40px,6vh,60px);
+}
+.payment-badge{
+  display:flex;align-items:center;gap:16px;
+  background:rgba(201,168,76,.07);
+  border:1px solid rgba(201,168,76,.32);
+  border-radius:3px;padding:22px 36px;
+  min-width:240px;
+}
+.payment-badge i{font-size:28px;color:#c9a84c;flex-shrink:0}
+.payment-badge-text{display:flex;flex-direction:column;gap:3px;text-align:left}
+.payment-badge-val{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#f0ebe0}
+.payment-badge-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8a9e90}
+.payment-note{margin-top:clamp(28px,4vh,40px);font-size:13px;color:#6a7a6e;letter-spacing:.04em}
+
 /* ── Contact ────────────────────────────────────────────────────────────── */
 #contact{background:#090c08;color:#e8e0d0;padding:clamp(80px,12vh,140px) 0}
 #contact h2{color:#f6f1e7;margin:0 0 20px}
@@ -556,6 +582,10 @@ footer{background:#060808;color:rgba(232,224,208,.65);padding:48px 0}
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-inner" data-reveal>
+      <div class="hero-project-badge">
+        <span class="hero-project-diamond">◆</span>
+        <span class="hero-project-name">Referans Pendik</span>
+      </div>
       <div class="hero-eyebrow">
         <span class="eyebrow-bar"></span>
         <span class="eyebrow-label" id="hero-eyebrow"></span>
@@ -715,6 +745,22 @@ footer{background:#060808;color:rgba(232,224,208,.65);padding:48px 0}
   </div>
 </section>
 
+<!-- PAYMENT -->
+<section id="payment">
+  <div class="section-wrap">
+    <div class="section-head" style="max-width:100%" data-reveal>
+      <div class="section-eyebrow" style="justify-content:center">
+        <span class="eyebrow-bar-sm"></span>
+        <span class="eyebrow-text-sm" style="color:#c9a84c" id="pay-eyebrow"></span>
+      </div>
+      <h2 id="pay-title"></h2>
+      <p class="section-sub" id="pay-sub"></p>
+    </div>
+    <div class="payment-badges" id="pay-badges"></div>
+    <p class="payment-note" id="pay-note"></p>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-wrap">
@@ -795,7 +841,7 @@ const I18N = {
       {label:'Proje',id:'highlights'},{label:'Daireler',id:'apartments'},
       {label:'Vaziyet',id:'vaziyet'},{label:'Mimari',id:'architecture'},
       {label:'Konum',id:'location'},{label:'Yaşam',id:'lifestyle'},
-      {label:'İletişim',id:'contact'}
+      {label:'Ödeme',id:'payment'},{label:'İletişim',id:'contact'}
     ]},
     hero: {
       eyebrow:'Pendik · İstanbul',
@@ -903,6 +949,16 @@ const I18N = {
       title:'Eve Dönmenin Yeni Hali',
       sub:'Süs havuzlarından çocuk oyun alanlarına, 35.000 m²\'lik peyzajda kurulan bir yaşam.'
     },
+    pay:{
+      eyebrow:'Ödeme Kolaylıkları',
+      title:'Esnek Ödeme İmkânları',
+      sub:'Projenizi bugün güvence altına alın, size uygun ödeme planıyla hayalinizdeki eve kavuşun.',
+      badges:[
+        {val:'24 Ay',label:'Vade İmkânı',icon:'ph-calendar'},
+        {val:'%20',label:'Peşin İndirim',icon:'ph-percent'}
+      ],
+      note:'Ödeme koşulları hakkında detaylı bilgi için danışmanlarımızla iletişime geçin.'
+    },
     form:{
       eyebrow:'İletişim', title:'Ayrıcalıklı Yaşamı Keşfedin',
       sub:'Formu doldurun; size özel bilgilendirme ve güncel fiyat listesi için sizi arayalım.',
@@ -934,7 +990,7 @@ const I18N = {
       {label:'Project',id:'highlights'},{label:'Residences',id:'apartments'},
       {label:'Site Plan',id:'vaziyet'},{label:'Architecture',id:'architecture'},
       {label:'Location',id:'location'},{label:'Lifestyle',id:'lifestyle'},
-      {label:'Contact',id:'contact'}
+      {label:'Payment',id:'payment'},{label:'Contact',id:'contact'}
     ]},
     hero:{
       eyebrow:'Pendik · İstanbul',
@@ -1042,6 +1098,16 @@ const I18N = {
       title:'A New Way to Come Home',
       sub:'From ornamental pools to children\'s playgrounds — a life set within 35,000 m² of landscape.'
     },
+    pay:{
+      eyebrow:'Payment Options',
+      title:'Flexible Payment Plans',
+      sub:'Secure your home today and move in with a payment plan that works for you.',
+      badges:[
+        {val:'24 Months',label:'Instalment Available',icon:'ph-calendar'},
+        {val:'20%',label:'Cash Discount',icon:'ph-percent'}
+      ],
+      note:'Contact our consultants for detailed information on payment terms.'
+    },
     form:{
       eyebrow:'Contact', title:'Discover the Privileged Life',
       sub:'Fill in the form and we\'ll call you with tailored details and the current price list.',
@@ -1143,6 +1209,7 @@ function setLang(newLang) {
   renderLocItems();
   renderPoetry();
   renderLifeGallery(true);
+  renderPayment();
   renderFooterLinks();
   if (!submitted) renderForm();
 }
@@ -1305,6 +1372,24 @@ function renderPoetry() {
   setText('poetry-label', t('poetry.label'));
   document.getElementById('poetry-lines').innerHTML =
     t('poetry.lines').map(l => `<li>${esc(l)}</li>`).join('');
+}
+
+function renderPayment() {
+  setText('pay-eyebrow', t('pay.eyebrow'));
+  setText('pay-title', t('pay.title'));
+  setText('pay-sub', t('pay.sub'));
+  setText('pay-note', t('pay.note'));
+  const el = document.getElementById('pay-badges');
+  if (el) {
+    el.innerHTML = t('pay.badges').map(b => `
+      <div class="payment-badge">
+        <i class="ph-light ${b.icon}"></i>
+        <div class="payment-badge-text">
+          <span class="payment-badge-val">${esc(b.val)}</span>
+          <span class="payment-badge-label">${esc(b.label)}</span>
+        </div>
+      </div>`).join('');
+  }
 }
 
 function renderFooterLinks() {
@@ -1535,6 +1620,7 @@ function init() {
   renderLocItems();
   renderPoetry();
   renderLifeGallery();
+  renderPayment();
   renderFooterLinks();
   renderForm();
   initReveal();
