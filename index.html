@@ -13,8 +13,8 @@
 <style>
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:'Manrope',system-ui,sans-serif;background:#f1ece1;color:#2b3a31;overflow-x:hidden}
-::selection{background:#c0883c;color:#fff}
+body{margin:0;font-family:'Manrope',system-ui,sans-serif;background:#0f1310;color:#e8e0d0;overflow-x:hidden}
+::selection{background:#c9a84c;color:#0f1310}
 
 /* ── Nav ────────────────────────────────────────────────────────────────── */
 #nav{
@@ -25,12 +25,19 @@ body{margin:0;font-family:'Manrope',system-ui,sans-serif;background:#f1ece1;colo
   transition:background .45s,color .45s,box-shadow .45s,padding .45s,backdrop-filter .45s;
 }
 #nav.scrolled{
-  background:rgba(241,236,225,.94);color:#2b3a31;
-  box-shadow:0 1px 0 rgba(43,58,49,.07),0 10px 34px rgba(43,58,49,.07);
+  background:rgba(13,21,16,.96);color:#e8e0d0;
+  box-shadow:0 1px 0 rgba(201,168,76,.08),0 10px 34px rgba(0,0,0,.4);
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   padding-top:13px;padding-bottom:13px;
 }
 .nav-logo{cursor:pointer;display:flex;flex-direction:column;line-height:1}
+.nav-logo-top{display:flex;align-items:center;gap:7px}
+.nav-logo-diamond{
+  font-size:13px;
+  background:linear-gradient(135deg,#c9a84c,#f0d080,#c9a84c);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;flex-shrink:0;
+}
 .nav-logo-name{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600;letter-spacing:.03em}
 .nav-logo-sub{font-size:9px;letter-spacing:.42em;text-transform:uppercase;opacity:.72;margin-top:5px}
 .nav-links{display:flex;gap:clamp(20px,2.6vw,38px);font-size:13px;font-weight:500;letter-spacing:.015em}
@@ -42,11 +49,11 @@ body{margin:0;font-family:'Manrope',system-ui,sans-serif;background:#f1ece1;colo
 .lang-sep{opacity:.4;cursor:default!important}
 .nav-cta{
   font-family:'Manrope',sans-serif;cursor:pointer;border:none;
-  background:#c0883c;color:#fff;font-size:13px;font-weight:600;
+  background:#c9a84c;color:#0f1310;font-size:13px;font-weight:600;
   letter-spacing:.04em;padding:11px 22px;border-radius:2px;
   transition:background .3s,transform .2s;
 }
-.nav-cta:hover{background:#a16f2c}
+.nav-cta:hover{background:#a88430}
 .nav-cta:active{transform:scale(.97)}
 @media(max-width:920px){.nav-links{display:none!important}}
 @media(max-width:640px){
@@ -85,8 +92,8 @@ body{margin:0;font-family:'Manrope',system-ui,sans-serif;background:#f1ece1;colo
 }
 .hero-inner{max-width:780px}
 .hero-eyebrow{display:flex;align-items:center;gap:13px;margin-bottom:26px}
-.eyebrow-bar{width:36px;height:1px;background:#c0883c;display:block;flex-shrink:0}
-.eyebrow-label{letter-spacing:.34em;font-size:12px;text-transform:uppercase;color:#e8c89a;font-weight:600}
+.eyebrow-bar{width:36px;height:1px;background:#c9a84c;display:block;flex-shrink:0}
+.eyebrow-label{letter-spacing:.34em;font-size:12px;text-transform:uppercase;color:#d4a847;font-weight:600}
 h1{
   font-family:'Cormorant Garamond',serif;color:#f6f1e7;
   font-weight:600;font-size:clamp(36px,7.2vw,98px);
@@ -99,19 +106,19 @@ h1{
 .hero-stat{display:flex;flex-direction:column;gap:5px}
 .stat-num{
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(26px,3.4vw,44px);font-weight:600;color:#e8c89a;line-height:1;
+  font-size:clamp(26px,3.4vw,44px);font-weight:600;color:#d4a847;line-height:1;
   text-shadow:0 1px 10px rgba(10,18,12,.4);
 }
 .stat-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(246,241,231,.78);font-weight:600}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:14px}
 .btn-primary{
   font-family:'Manrope',sans-serif;cursor:pointer;border:none;
-  background:#c0883c;color:#fff;font-size:14px;font-weight:600;
+  background:#c9a84c;color:#0f1310;font-size:14px;font-weight:600;
   letter-spacing:.03em;padding:16px 32px;border-radius:2px;
   display:flex;align-items:center;gap:10px;
   transition:background .3s,transform .2s;
 }
-.btn-primary:hover{background:#a16f2c}
+.btn-primary:hover{background:#a88430}
 .btn-primary:active{transform:scale(.98)}
 .btn-ghost{
   font-family:'Manrope',sans-serif;cursor:pointer;
@@ -143,33 +150,36 @@ h1{
 .section-wrap{max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
 .section-head{max-width:680px}
 .section-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px}
-.eyebrow-bar-sm{width:34px;height:1px;background:#c0883c;display:block;flex-shrink:0}
+.eyebrow-bar-sm{width:34px;height:1px;background:#c9a84c;display:block;flex-shrink:0}
 .eyebrow-text-sm{letter-spacing:.3em;font-size:11.5px;text-transform:uppercase;font-weight:600}
 h2{
   font-family:'Cormorant Garamond',serif;font-weight:600;
   font-size:clamp(34px,4.6vw,60px);line-height:1.02;
   letter-spacing:-.01em;margin:0 0 18px;
 }
-.section-sub{margin:0;font-size:16px;line-height:1.65;color:#5d6b60;max-width:60ch}
+.section-sub{margin:0;font-size:16px;line-height:1.65;color:#8a9e90;max-width:60ch}
+
+/* ── Gold divider ───────────────────────────────────────────────────────── */
+.gold-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.55),transparent);margin:0}
 
 /* ── Highlights ─────────────────────────────────────────────────────────── */
-#highlights{background:#f1ece1;padding:clamp(80px,12vh,140px) 0}
+#highlights{background:#0f1310;padding:clamp(80px,12vh,140px) 0}
 .hl-head{margin-bottom:clamp(48px,7vh,80px)}
 .hl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:clamp(18px,2.5vw,32px)}
 .hl-card{
-  background:#faf6ee;border:1px solid rgba(43,58,49,.1);
+  background:#1c2119;border:1px solid rgba(201,168,76,.18);
   border-radius:4px;overflow:hidden;display:flex;flex-direction:column;
 }
 .hl-card-img{height:210px;overflow:hidden;flex-shrink:0}
 .hl-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
 .hl-card:hover .hl-card-img img{transform:scale(1.04)}
 .hl-card-body{padding:clamp(26px,2.8vw,40px) clamp(22px,2.4vw,34px);display:flex;flex-direction:column;gap:16px}
-.hl-card i{font-size:42px;color:#c0883c}
-.hl-card h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:28px;margin:0;color:#2b3a31}
-.hl-card p{margin:0;font-size:14.5px;line-height:1.6;color:#5d6b60}
+.hl-card i{font-size:42px;color:#c9a84c}
+.hl-card h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:28px;margin:0;color:#f0ebe0}
+.hl-card p{margin:0;font-size:14.5px;line-height:1.6;color:#8a9e90}
 
 /* ── Apartments ─────────────────────────────────────────────────────────── */
-#apartments{background:#e7dfce;padding:clamp(80px,12vh,140px) 0}
+#apartments{background:#161b13;padding:clamp(80px,12vh,140px) 0}
 .apt-head{
   display:flex;flex-wrap:wrap;align-items:flex-end;
   justify-content:space-between;gap:24px;
@@ -179,11 +189,11 @@ h2{
 .apt-nav-btns{display:flex;gap:10px}
 .apt-btn{
   cursor:pointer;width:50px;height:50px;border-radius:50%;
-  border:1px solid rgba(43,58,49,.28);background:transparent;
-  color:#2b3a31;display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(201,168,76,.3);background:transparent;
+  color:#e8e0d0;display:flex;align-items:center;justify-content:center;
   font-size:18px;transition:background .3s,color .3s;
 }
-.apt-btn:hover{background:#2b3a31;color:#f1ece1}
+.apt-btn:hover{background:#c9a84c;color:#0f1310}
 .apt-scroller{
   display:grid;
   grid-template-columns:repeat(5,1fr);
@@ -195,30 +205,63 @@ h2{
 @media(max-width:700px){.apt-scroller{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.apt-scroller{grid-template-columns:1fr}}
 .apt-card{
-  background:#faf6ee;border:1px solid rgba(43,58,49,.1);
+  background:#1c2119;border:1px solid rgba(201,168,76,.15);
   border-radius:4px;overflow:hidden;display:flex;flex-direction:column;
 }
-.apt-img{height:228px;border-bottom:1px solid rgba(43,58,49,.08);overflow:hidden;flex-shrink:0}
+.apt-img{height:228px;border-bottom:1px solid rgba(201,168,76,.1);overflow:hidden;flex-shrink:0;position:relative}
 .apt-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
 .apt-card:hover .apt-img img{transform:scale(1.04)}
+.apt-stock{
+  position:absolute;top:10px;right:10px;
+  background:rgba(13,21,16,.82);backdrop-filter:blur(4px);
+  border:1px solid rgba(201,168,76,.4);
+  color:#c9a84c;font-size:10.5px;font-weight:700;letter-spacing:.06em;
+  padding:4px 9px;border-radius:2px;pointer-events:none;
+}
 .apt-body{padding:24px 22px 26px;display:flex;flex-direction:column;gap:11px;flex:1}
 .apt-type-row{display:flex;align-items:baseline;justify-content:space-between}
-.apt-type{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#2b3a31;line-height:1}
-.apt-size{font-size:13px;letter-spacing:.03em;color:#a16f2c;font-weight:700}
-.apt-desc{margin:0;font-size:13.5px;line-height:1.55;color:#5d6b60;flex:1}
+.apt-type{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#f0ebe0;line-height:1}
+.apt-size{font-size:13px;letter-spacing:.03em;color:#c9a84c;font-weight:700}
+.apt-desc{margin:0;font-size:13.5px;line-height:1.55;color:#8a9e90;flex:1}
 .apt-cta{
   margin-top:6px;font-family:'Manrope',sans-serif;cursor:pointer;
-  background:transparent;border:1px solid rgba(43,58,49,.25);
-  color:#2b3a31;font-size:13px;font-weight:600;letter-spacing:.02em;
+  background:transparent;border:1px solid rgba(201,168,76,.25);
+  color:#e8e0d0;font-size:13px;font-weight:600;letter-spacing:.02em;
   padding:12px 16px;border-radius:2px;
   display:flex;align-items:center;justify-content:space-between;
   transition:background .3s,color .3s,border-color .3s;width:100%;
 }
-.apt-cta:hover{background:#2b3a31;color:#f1ece1;border-color:#2b3a31}
-.apt-note{font-size:11.5px;color:#8a9388;letter-spacing:.02em;margin:0;padding:14px 0 0}
+.apt-cta:hover{background:#c9a84c;color:#0f1310;border-color:#c9a84c}
+.apt-note{font-size:11.5px;color:#6a7a6e;letter-spacing:.02em;margin:0;padding:14px 0 0}
+
+/* ── Vaziyet Planı ──────────────────────────────────────────────────────── */
+#vaziyet{background:#0d1510;padding:clamp(80px,12vh,140px) 0}
+#vaziyet h2{color:#f0ebe0}
+.vaziyet-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(40px,6vw,80px);align-items:center;
+}
+@media(max-width:760px){.vaziyet-grid{grid-template-columns:1fr}}
+.vaziyet-img-wrap{border-radius:4px;overflow:hidden;cursor:zoom-in;border:1px solid rgba(201,168,76,.2)}
+.vaziyet-img-wrap img{width:100%;height:auto;display:block}
+.vaziyet-area{
+  display:inline-flex;align-items:center;gap:12px;
+  background:rgba(201,168,76,.08);
+  border:1px solid rgba(201,168,76,.28);
+  border-radius:2px;padding:10px 20px;margin-bottom:32px;
+}
+.vaziyet-area-num{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#c9a84c}
+.vaziyet-area-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#8a9e90}
+.vaziyet-features{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px}
+.vaziyet-features li{
+  display:flex;align-items:center;gap:14px;
+  font-size:14.5px;color:#c8cfc9;line-height:1.4;
+  border-left:2px solid rgba(201,168,76,.4);padding-left:16px;
+}
+.vaziyet-features li i{font-size:18px;color:#c9a84c;flex-shrink:0}
 
 /* ── Location ───────────────────────────────────────────────────────────── */
-#location{background:#2b3a31;color:#f1ece1;padding:clamp(80px,12vh,140px) 0}
+#location{background:#0d1510;color:#e8e0d0;padding:clamp(80px,12vh,140px) 0}
 #location h2{color:#f6f1e7}
 #location .section-sub{color:rgba(241,236,225,.72)}
 .loc-grid{
@@ -227,18 +270,19 @@ h2{
 }
 .map-slot{
   position:relative;border-radius:4px;overflow:hidden;
-  min-height:420px;border:1px solid rgba(241,236,225,.16);
-  background:linear-gradient(155deg,#1a2e22 0%,#243b2d 40%,#2b3a31 70%,#1f2b24 100%);
+  min-height:420px;border:1px solid rgba(201,168,76,.15);
+  background:linear-gradient(155deg,#080e09 0%,#0d1510 40%,#0f1510 70%,#090c08 100%);
   display:flex;align-items:center;justify-content:center;
 }
 .map-iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(20%)}
 .map-badge{
   position:absolute;left:18px;bottom:18px;
-  background:rgba(43,58,49,.82);backdrop-filter:blur(6px);
+  background:rgba(13,21,16,.88);backdrop-filter:blur(6px);
+  border:1px solid rgba(201,168,76,.2);
   padding:11px 16px;border-radius:2px;
   display:flex;align-items:center;gap:9px;
 }
-.map-badge i{font-size:17px;color:#e8c89a}
+.map-badge i{font-size:17px;color:#d4a847}
 .map-badge span{font-size:12.5px;letter-spacing:.04em;font-weight:600}
 .loc-tabs{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px}
 .loc-tab{
@@ -248,16 +292,16 @@ h2{
   background:transparent;color:rgba(241,236,225,.8);
   border:1px solid rgba(241,236,225,.25);
 }
-.loc-tab.active{background:#c0883c;color:#fff;border-color:#c0883c}
+.loc-tab.active{background:#c9a84c;color:#0f1310;border-color:#c9a84c}
 .loc-item{
   display:flex;align-items:center;justify-content:space-between;
   gap:16px;padding:15px 2px;border-bottom:1px solid rgba(241,236,225,.13);
 }
 .loc-item-name{font-size:14.5px;color:#f1ece1;letter-spacing:.01em}
-.loc-item-dist{font-size:13px;font-weight:600;letter-spacing:.04em;color:#e8c89a;white-space:nowrap}
+.loc-item-dist{font-size:13px;font-weight:600;letter-spacing:.04em;color:#d4a847;white-space:nowrap}
 
 /* ── Lifestyle ──────────────────────────────────────────────────────────── */
-#lifestyle{background:#f1ece1;padding:clamp(80px,12vh,140px) 0}
+#lifestyle{background:#0f1310;padding:clamp(80px,12vh,140px) 0}
 .life-gallery{
   display:grid;grid-template-columns:repeat(4,1fr);
   grid-auto-rows:210px;grid-auto-flow:row dense;gap:14px;
@@ -295,14 +339,14 @@ h2{
 .hero-ticker-track:hover{animation-play-state:paused}
 .hero-ticker-item{
   font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:clamp(16px,1.9vw,22px);color:rgba(232,200,154,.82);
+  font-size:clamp(16px,1.9vw,22px);color:rgba(212,168,71,.82);
   letter-spacing:.01em;padding:0 40px;
 }
-.hero-ticker-sep{color:rgba(192,136,60,.5);padding:0;font-style:normal}
+.hero-ticker-sep{color:rgba(201,168,76,.5);padding:0;font-style:normal}
 @keyframes rpTicker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ── Architecture ───────────────────────────────────────────────────────── */
-#architecture{background:#e7dfce;padding:clamp(80px,12vh,140px) 0}
+#architecture{background:#161b13;padding:clamp(80px,12vh,140px) 0}
 .arch-grid{
   display:grid;grid-template-columns:1fr 1fr;
   gap:clamp(40px,6vw,80px);align-items:center;
@@ -312,10 +356,10 @@ h2{
 .arch-img img{width:100%;height:100%;object-fit:cover;display:block}
 
 /* ── Poetry ─────────────────────────────────────────────────────────────── */
-#poetry{background:#2b3a31;padding:clamp(70px,10vh,110px) 0;text-align:center}
+#poetry{background:#0d1510;padding:clamp(70px,10vh,110px) 0;text-align:center}
 .poetry-label{
   font-size:11px;letter-spacing:.38em;text-transform:uppercase;
-  color:#e8c89a;font-weight:600;margin-bottom:clamp(28px,4vh,44px);
+  color:#d4a847;font-weight:600;margin-bottom:clamp(28px,4vh,44px);
   display:block;
 }
 .poetry-lines{
@@ -328,21 +372,55 @@ h2{
   color:rgba(246,241,231,.88);line-height:1.15;
   transition:color .3s;
 }
-.poetry-lines li:hover{color:#e8c89a}
+.poetry-lines li:hover{color:#d4a847}
 
 /* ── Feature Banner ─────────────────────────────────────────────────────── */
 #feature-banner{width:100%;height:clamp(260px,38vh,480px);overflow:hidden;position:relative}
 #feature-banner img{width:100%;height:100%;object-fit:cover;display:block}
 
+/* ── Prices ─────────────────────────────────────────────────────────────── */
+#prices{background:#161b13;padding:clamp(80px,12vh,140px) 0}
+#prices h2{color:#f0ebe0}
+.prices-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:14px;margin-top:clamp(36px,5vh,52px);
+}
+.price-card{
+  background:#1c2119;border:1px solid rgba(201,168,76,.18);
+  border-radius:4px;padding:22px 24px;
+  display:flex;flex-direction:column;gap:6px;
+  transition:border-color .3s,transform .25s;
+}
+.price-card:hover{border-color:rgba(201,168,76,.5);transform:translateY(-2px)}
+.price-type{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#f0ebe0}
+.price-amount{font-size:18px;font-weight:700;color:#c9a84c;letter-spacing:.01em}
+.price-sqm{font-size:12px;color:#8a9e90;letter-spacing:.04em}
+.prices-payment{
+  margin-top:clamp(36px,5vh,52px);
+  display:flex;flex-wrap:wrap;gap:16px;justify-content:center;
+}
+.payment-badge{
+  display:flex;align-items:center;gap:14px;
+  background:rgba(201,168,76,.07);
+  border:1px solid rgba(201,168,76,.28);
+  border-radius:3px;padding:18px 28px;
+  min-width:220px;
+}
+.payment-badge i{font-size:24px;color:#c9a84c;flex-shrink:0}
+.payment-badge-text{display:flex;flex-direction:column;gap:2px}
+.payment-badge-val{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#f0ebe0}
+.payment-badge-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8a9e90}
+.prices-note{margin-top:24px;text-align:center;font-size:13px;color:#6a7a6e;letter-spacing:.04em}
+
 /* ── Contact ────────────────────────────────────────────────────────────── */
-#contact{background:#1f2b24;color:#f1ece1;padding:clamp(80px,12vh,140px) 0}
+#contact{background:#090c08;color:#e8e0d0;padding:clamp(80px,12vh,140px) 0}
 #contact h2{color:#f6f1e7;margin:0 0 20px}
 .contact-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
   gap:clamp(36px,5vw,72px);align-items:start;
 }
 .contact-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:22px}
-.contact-eyebrow-text{letter-spacing:.3em;font-size:11.5px;text-transform:uppercase;color:#e8c89a;font-weight:600}
+.contact-eyebrow-text{letter-spacing:.3em;font-size:11.5px;text-transform:uppercase;color:#d4a847;font-weight:600}
 .contact-sub{margin:0 0 38px;font-size:16px;line-height:1.65;color:rgba(241,236,225,.74);max-width:46ch}
 .contact-links{display:flex;flex-direction:column;gap:20px}
 .contact-link{display:flex;align-items:center;gap:15px;color:inherit;text-decoration:none}
@@ -351,58 +429,60 @@ h2{
   border:1px solid rgba(241,236,225,.22);
   display:flex;align-items:center;justify-content:center;
 }
-.contact-icon i{font-size:19px;color:#e8c89a}
+.contact-icon i{font-size:19px;color:#d4a847}
 .contact-icon .wa{font-size:20px}
 .contact-link-text{display:flex;flex-direction:column;gap:2px}
 .contact-link-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(241,236,225,.55)}
 .contact-link-val{font-size:15px;font-weight:600}
 
 /* ── Form ───────────────────────────────────────────────────────────────── */
-.form-box{background:#faf6ee;border-radius:5px;padding:clamp(28px,3vw,40px)}
+.form-box{background:#1c2119;border-radius:5px;padding:clamp(28px,3vw,40px);border:1px solid rgba(201,168,76,.15)}
 .form-group{display:flex;flex-direction:column;gap:7px;margin-bottom:20px}
-.form-label{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#2b3a31}
-.form-label .hint{text-transform:none;letter-spacing:0;color:#8a9388;font-weight:400}
+.form-label{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#c9a84c}
+.form-label .hint{text-transform:none;letter-spacing:0;color:#6a7a6e;font-weight:400}
 .form-input,.form-select,.form-textarea{
   font-family:'Manrope',sans-serif;font-size:15px;
-  padding:13px 15px;border:1px solid rgba(43,58,49,.22);
-  border-radius:2px;background:#fff;color:#2b3a31;
+  padding:13px 15px;border:1px solid rgba(201,168,76,.2);
+  border-radius:2px;background:#0f1310;color:#e8e0d0;
   outline:none;transition:border-color .3s;width:100%;
 }
-.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:#c0883c}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:#c9a84c}
+.form-input::placeholder,.form-textarea::placeholder{color:#4a5c50}
 .form-select{cursor:pointer}
 .form-textarea{resize:vertical}
 .form-error{font-size:12.5px;color:#b3502f;margin-top:2px}
 .form-consent-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:24px;cursor:pointer}
-.form-consent-row input{margin-top:2px;width:16px;height:16px;accent-color:#c0883c;cursor:pointer;flex-shrink:0}
-.form-consent-text{font-size:12.5px;line-height:1.5;color:#5d6b60}
+.form-consent-row input{margin-top:2px;width:16px;height:16px;accent-color:#c9a84c;cursor:pointer;flex-shrink:0}
+.form-consent-text{font-size:12.5px;line-height:1.5;color:#8a9e90}
 .form-consent-error{font-size:12.5px;color:#b3502f;margin:-14px 0 18px}
 .btn-submit{
   width:100%;font-family:'Manrope',sans-serif;cursor:pointer;border:none;
-  background:#c0883c;color:#fff;font-size:15px;font-weight:600;
+  background:#c9a84c;color:#0f1310;font-size:15px;font-weight:600;
   letter-spacing:.03em;padding:16px;border-radius:2px;
   display:flex;align-items:center;justify-content:center;gap:10px;
   transition:background .3s,transform .2s;
 }
-.btn-submit:hover{background:#a16f2c}
+.btn-submit:hover{background:#a88430}
 .btn-submit:active{transform:scale(.99)}
 .form-success{
-  background:#faf6ee;border-radius:5px;
+  background:#1c2119;border-radius:5px;
+  border:1px solid rgba(201,168,76,.15);
   padding:clamp(40px,5vw,60px) clamp(28px,3vw,40px);
   text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px;
 }
-.form-success i{font-size:58px;color:#3f7a4f}
-.form-success h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;margin:0;color:#2b3a31}
-.form-success p{margin:0;font-size:15px;line-height:1.6;color:#5d6b60;max-width:38ch}
+.form-success i{font-size:58px;color:#4d9e60}
+.form-success h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:32px;margin:0;color:#f0ebe0}
+.form-success p{margin:0;font-size:15px;line-height:1.6;color:#8a9e90;max-width:38ch}
 .btn-again{
   font-family:'Manrope',sans-serif;cursor:pointer;background:transparent;
-  border:1px solid rgba(43,58,49,.25);color:#2b3a31;font-size:13px;
+  border:1px solid rgba(201,168,76,.25);color:#e8e0d0;font-size:13px;
   font-weight:600;padding:11px 22px;border-radius:2px;
   transition:background .3s,color .3s;
 }
-.btn-again:hover{background:#2b3a31;color:#f1ece1}
+.btn-again:hover{background:#c9a84c;color:#0f1310}
 
 /* ── Footer ─────────────────────────────────────────────────────────────── */
-footer{background:#1a241e;color:rgba(241,236,225,.7);padding:48px 0}
+footer{background:#060808;color:rgba(232,224,208,.65);padding:48px 0}
 .footer-top{
   max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,48px);
   display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;
@@ -416,9 +496,9 @@ footer{background:#1a241e;color:rgba(241,236,225,.7);padding:48px 0}
 .footer-bottom{
   max-width:1280px;margin:28px auto 0;
   padding:20px clamp(20px,5vw,48px) 0;
-  border-top:1px solid rgba(241,236,225,.1);
+  border-top:1px solid rgba(201,168,76,.1);
   display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
-  font-size:11.5px;color:rgba(241,236,225,.5);
+  font-size:11.5px;color:rgba(232,224,208,.45);
 }
 
 /* ── Lightbox ───────────────────────────────────────────────────────────── */
@@ -429,7 +509,7 @@ footer{background:#1a241e;color:rgba(241,236,225,.7);padding:48px 0}
   transition:opacity .3s;
 }
 #lightbox.open{opacity:1;pointer-events:all}
-#lb-overlay{position:absolute;inset:0;background:rgba(13,20,16,.93);cursor:zoom-out}
+#lb-overlay{position:absolute;inset:0;background:rgba(6,8,8,.95);cursor:zoom-out}
 #lb-img-wrap{position:relative;z-index:1;display:flex;align-items:center;justify-content:center}
 #lb-img{
   max-width:90vw;max-height:86vh;object-fit:contain;display:block;
@@ -466,7 +546,7 @@ footer{background:#1a241e;color:rgba(241,236,225,.7);padding:48px 0}
   position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:202;
   color:rgba(241,236,225,.8);font-size:13.5px;letter-spacing:.04em;
   font-family:'Cormorant Garamond',serif;font-weight:500;
-  background:rgba(13,20,16,.55);backdrop-filter:blur(8px);
+  background:rgba(6,8,8,.6);backdrop-filter:blur(8px);
   padding:8px 20px;border-radius:24px;white-space:nowrap;
 }
 .lb-trigger{cursor:zoom-in}
@@ -487,7 +567,10 @@ footer{background:#1a241e;color:rgba(241,236,225,.7);padding:48px 0}
 <!-- NAV -->
 <nav id="nav">
   <div class="nav-logo" onclick="scrollToTop()">
-    <span class="nav-logo-name">Referans <span class="logo-pendik">Pendik</span></span>
+    <div class="nav-logo-top">
+      <span class="nav-logo-diamond">◆</span>
+      <span class="nav-logo-name">Referans <span class="logo-pendik">Pendik</span></span>
+    </div>
     <span class="nav-logo-sub">Pendik · İstanbul</span>
   </div>
   <div class="nav-links" id="nav-links"></div>
@@ -539,7 +622,7 @@ footer{background:#1a241e;color:rgba(241,236,225,.7);padding:48px 0}
     <div class="section-head hl-head" data-reveal>
       <div class="section-eyebrow">
         <span class="eyebrow-bar-sm"></span>
-        <span class="eyebrow-text-sm" style="color:#a16f2c" id="hl-eyebrow"></span>
+        <span class="eyebrow-text-sm" style="color:#c9a84c" id="hl-eyebrow"></span>
       </div>
       <h2 id="hl-title"></h2>
       <p class="section-sub" id="hl-sub"></p>
@@ -549,9 +632,11 @@ footer{background:#1a241e;color:rgba(241,236,225,.7);padding:48px 0}
 </section>
 
 <!-- FEATURE BANNER -->
+<div class="gold-divider"></div>
 <section id="feature-banner">
   <img src="project/uploads/ayricaliginiz.png" alt="Ayrıcalığınız Referans Pendik" loading="lazy">
 </section>
+<div class="gold-divider"></div>
 
 <!-- APARTMENTS -->
 <section id="apartments">
@@ -567,6 +652,35 @@ footer{background:#1a241e;color:rgba(241,236,225,.7);padding:48px 0}
   <div class="section-wrap"><p class="apt-note" id="apt-note"></p></div>
 </section>
 
+<!-- GOLD DIVIDER -->
+<div class="gold-divider"></div>
+
+<!-- VAZIYET PLANI -->
+<section id="vaziyet">
+  <div class="section-wrap">
+    <div class="vaziyet-grid">
+      <div class="vaziyet-img-wrap lb-trigger" onclick="openVaziyetLightbox()" data-reveal>
+        <img src="project/uploads/vaziyet_plani.png" alt="Vaziyet Planı" loading="lazy">
+      </div>
+      <div data-reveal>
+        <div class="section-eyebrow">
+          <span class="eyebrow-bar-sm"></span>
+          <span class="eyebrow-text-sm" style="color:#c9a84c" id="vaziyet-eyebrow"></span>
+        </div>
+        <h2 id="vaziyet-title"></h2>
+        <div class="vaziyet-area">
+          <span class="vaziyet-area-num" id="vaziyet-area-num"></span>
+          <span class="vaziyet-area-label" id="vaziyet-area-label"></span>
+        </div>
+        <ul class="vaziyet-features" id="vaziyet-features"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOLD DIVIDER -->
+<div class="gold-divider"></div>
+
 <!-- ARCHITECTURE -->
 <section id="architecture">
   <div class="section-wrap">
@@ -577,7 +691,7 @@ footer{background:#1a241e;color:rgba(241,236,225,.7);padding:48px 0}
       <div>
         <div class="section-eyebrow">
           <span class="eyebrow-bar-sm"></span>
-          <span class="eyebrow-text-sm" style="color:#a16f2c" id="arch-eyebrow"></span>
+          <span class="eyebrow-text-sm" style="color:#c9a84c" id="arch-eyebrow"></span>
         </div>
         <h2 id="arch-title"></h2>
         <p class="section-sub" id="arch-sub"></p>
@@ -632,6 +746,26 @@ footer{background:#1a241e;color:rgba(241,236,225,.7);padding:48px 0}
       <p class="section-sub" id="life-sub"></p>
     </div>
     <div class="life-gallery" id="life-gallery"></div>
+  </div>
+</section>
+
+<!-- GOLD DIVIDER -->
+<div class="gold-divider"></div>
+
+<!-- PRICES -->
+<section id="prices">
+  <div class="section-wrap">
+    <div class="section-head" data-reveal>
+      <div class="section-eyebrow">
+        <span class="eyebrow-bar-sm"></span>
+        <span class="eyebrow-text-sm" style="color:#c9a84c" id="prices-eyebrow"></span>
+      </div>
+      <h2 id="prices-title"></h2>
+      <p class="section-sub" id="prices-sub"></p>
+    </div>
+    <div class="prices-grid" id="prices-grid"></div>
+    <div class="prices-payment" id="prices-payment"></div>
+    <p class="prices-note" id="prices-note"></p>
   </div>
 </section>
 
@@ -713,14 +847,16 @@ const I18N = {
   tr: {
     nav: { cta:'Bilgi Al', links:[
       {label:'Proje',id:'highlights'},{label:'Daireler',id:'apartments'},
-      {label:'Mimari',id:'architecture'},{label:'Konum',id:'location'},{label:'Yaşam',id:'lifestyle'},{label:'İletişim',id:'contact'}
+      {label:'Vaziyet',id:'vaziyet'},{label:'Mimari',id:'architecture'},
+      {label:'Konum',id:'location'},{label:'Yaşam',id:'lifestyle'},
+      {label:'Fiyatlar',id:'prices'},{label:'İletişim',id:'contact'}
     ]},
     hero: {
       eyebrow:'Pendik · İstanbul',
       line1:'Doğanın Kalbinde,', line2:'Denizin Huzurunda',
       cta:'Bilgi Al', cta2:'Projeyi Keşfet', scroll:'Keşfet',
       taglines:['Arkanızda Gözdağı Korusu...','Bitişiğinizde Millet Bahçesi...','Manzaranız Deniz...','Martıların Sesi...','Yeşilin Kokusu...','Dört Mevsim Tatil Hissi...'],
-      stats:[{num:'686',label:'Ünite'},{num:'35.000 m²',label:'Peyzaj'},{num:'Deniz',label:'Manzarası'}]
+      stats:[{num:'686',label:'Ünite'},{num:'78.620 m²',label:'Proje Alanı'},{num:'Deniz & Ada',label:'Manzarası'}]
     },
     hl: {
       eyebrow:'Şehrin İçinde, Doğanın Kucağında',
@@ -736,6 +872,21 @@ const I18N = {
       title:'Size Göre Bir Ev',
       sub:'2+1\'den dubleks dairelere kadar, her yaşam biçimine uygun ferah planlar.',
       cta:'Detayları Gör', note:'*Belirtilen alanlar temsilidir.'
+    },
+    vaziyet:{
+      eyebrow:'Vaziyet Planı',
+      title:'Yeşilin İçinde Planlanmış Yaşam',
+      sub:'78.620 m² proje alanında geniş yeşil alanlar, gölet, yürüyüş parkurları ve sosyal tesislerle tasarlanan bir yaşam.',
+      area:'78.620 m²',
+      areaLabel:'Proje Alanı',
+      features:[
+        {icon:'ph-tree',text:'Geniş Yeşil Alanlar ve Peyzaj'},
+        {icon:'ph-person-simple-walk',text:'Yürüyüş ve Koşu Parkurları'},
+        {icon:'ph-drop',text:'Gölet ve Su Öğeleri'},
+        {icon:'ph-buildings',text:'Sosyal Tesisler ve Kulüp Binası'},
+        {icon:'ph-baby',text:'Çocuk Oyun Alanları ve Spor Sahaları'},
+        {icon:'ph-shield-check',text:'Güvenli ve Konforlu Yaşam Alanı'}
+      ]
     },
     loc:{
       title:'Her Şey Yanı Başınızda',
@@ -806,6 +957,24 @@ const I18N = {
       title:'Eve Dönmenin Yeni Hali',
       sub:'Süs havuzlarından çocuk oyun alanlarına, 35.000 m²\'lik peyzajda kurulan bir yaşam.'
     },
+    prices:{
+      eyebrow:'Fiyat Listesi',
+      title:'Liste Fiyatlarımız',
+      sub:'Güncel fiyat listesi ve ödeme seçenekleri için danışmanlarımızla görüşün.',
+      items:[
+        {type:'2+1 Açık Mutfak',amount:'15.916.000 ₺',sqm:'92 m²'},
+        {type:'2+1 Kapalı Mutfak',amount:'17.216.000 ₺',sqm:'98 m²'},
+        {type:'2,5+1 Kapalı',amount:'24.150.000 ₺',sqm:'128 m²'},
+        {type:'3+1',amount:'24.380.000 ₺',sqm:'128 m²'},
+        {type:'3,5+1',amount:'41.492.000 ₺',sqm:'156 m²'},
+        {type:'4+1',amount:'34.960.000 ₺',sqm:'184 m²'}
+      ],
+      payment:[
+        {val:'24 Ay',label:'Vade İmkânı',icon:'ph-calendar'},
+        {val:'%20',label:'Peşin İndirim',icon:'ph-percent'}
+      ],
+      note:'*Fiyatlar liste fiyatı olup değişiklik gösterebilir. Güncel bilgi için danışmanlarımızla iletişime geçin.'
+    },
     form:{
       eyebrow:'İletişim', title:'Ayrıcalıklı Yaşamı Keşfedin',
       sub:'Formu doldurun; size özel bilgilendirme ve güncel fiyat listesi için sizi arayalım.',
@@ -835,14 +1004,16 @@ const I18N = {
   en: {
     nav:{cta:'Get Info',links:[
       {label:'Project',id:'highlights'},{label:'Residences',id:'apartments'},
-      {label:'Architecture',id:'architecture'},{label:'Location',id:'location'},{label:'Lifestyle',id:'lifestyle'},{label:'Contact',id:'contact'}
+      {label:'Site Plan',id:'vaziyet'},{label:'Architecture',id:'architecture'},
+      {label:'Location',id:'location'},{label:'Lifestyle',id:'lifestyle'},
+      {label:'Prices',id:'prices'},{label:'Contact',id:'contact'}
     ]},
     hero:{
       eyebrow:'Pendik · İstanbul',
       line1:'In the Heart of Nature,', line2:'the Calm of the Sea',
       cta:'Get Info', cta2:'Explore Project', scroll:'Explore',
       taglines:['Whispering Gözdağı Grove Behind You...','Community Garden Next Door...','Seaside Serenity in Your View...','Echoes of Seagulls...','Aroma of Lush Green...','Year-Round Vacation Vibes...'],
-      stats:[{num:'686',label:'Units'},{num:'35,000 m²',label:'Landscape'},{num:'Sea',label:'View'}]
+      stats:[{num:'686',label:'Units'},{num:'78,620 m²',label:'Project Area'},{num:'Sea & Islands',label:'View'}]
     },
     hl:{
       eyebrow:'Inside the City, Embraced by Nature',
@@ -858,6 +1029,21 @@ const I18N = {
       title:'A Home Made for You',
       sub:'From 2+1 to duplex homes — spacious plans for every way of living.',
       cta:'View Details', note:'*Stated areas are representative.'
+    },
+    vaziyet:{
+      eyebrow:'Site Plan',
+      title:'Life Planned Within Nature',
+      sub:'A life designed across 78,620 m² with green spaces, a pond, walking paths and social facilities.',
+      area:'78,620 m²',
+      areaLabel:'Project Area',
+      features:[
+        {icon:'ph-tree',text:'Expansive Green Areas & Landscaping'},
+        {icon:'ph-person-simple-walk',text:'Walking & Running Trails'},
+        {icon:'ph-drop',text:'Pond & Water Features'},
+        {icon:'ph-buildings',text:'Social Facilities & Club House'},
+        {icon:'ph-baby',text:'Children\'s Playgrounds & Sports Courts'},
+        {icon:'ph-shield-check',text:'Safe & Comfortable Living Environment'}
+      ]
     },
     loc:{
       title:'Everything Right Beside You',
@@ -928,6 +1114,24 @@ const I18N = {
       title:'A New Way to Come Home',
       sub:'From ornamental pools to children\'s playgrounds — a life set within 35,000 m² of landscape.'
     },
+    prices:{
+      eyebrow:'Price List',
+      title:'Our List Prices',
+      sub:'Contact our consultants for current pricing and payment options.',
+      items:[
+        {type:'2+1 Open Kitchen',amount:'₺15,916,000',sqm:'92 m²'},
+        {type:'2+1 Closed Kitchen',amount:'₺17,216,000',sqm:'98 m²'},
+        {type:'2.5+1 Closed',amount:'₺24,150,000',sqm:'128 m²'},
+        {type:'3+1',amount:'₺24,380,000',sqm:'128 m²'},
+        {type:'3.5+1',amount:'₺41,492,000',sqm:'156 m²'},
+        {type:'4+1',amount:'₺34,960,000',sqm:'184 m²'}
+      ],
+      payment:[
+        {val:'24 Months',label:'Instalment Available',icon:'ph-calendar'},
+        {val:'20%',label:'Cash Discount',icon:'ph-percent'}
+      ],
+      note:'*Prices are list prices and subject to change. Contact our consultants for current information.'
+    },
     form:{
       eyebrow:'Contact', title:'Discover the Privileged Life',
       sub:'Fill in the form and we\'ll call you with tailored details and the current price list.',
@@ -957,11 +1161,11 @@ const I18N = {
 };
 
 const APTS = [
-  {type:'2+1',size:'92 m²',tr:'Genç çiftler ve ilk evler için ideal bir başlangıç.',en:'An ideal start for young couples and first homes.'},
-  {type:'3+1',size:'128 m²',tr:'Büyüyen aileler için ferah ve dengeli bir plan.',en:'A spacious, balanced plan for growing families.'},
-  {type:'3.5+1',size:'156 m²',tr:'Ekstra çalışma ya da çocuk odasıyla esnek yaşam.',en:'Flexible living with an extra study or kids\' room.'},
-  {type:'4+1',size:'184 m²',tr:'Geniş aileler için cömert ve konforlu alanlar.',en:'Generous, comfortable space for larger families.'},
-  {type:'Dubleks',size:'232 m²',tr:'İki katlı, özel teraslı en seçkin yaşam tarzı.',en:'Two-storey living with a private terrace.'}
+  {type:'2+1',size:'92 m²',stock:'248 adet',tr:'Genç çiftler ve ilk evler için ideal bir başlangıç.',en:'An ideal start for young couples and first homes.'},
+  {type:'3+1',size:'128 m²',stock:'102 adet',tr:'Büyüyen aileler için ferah ve dengeli bir plan.',en:'A spacious, balanced plan for growing families.'},
+  {type:'3.5+1',size:'156 m²',stock:'16 adet',tr:'Ekstra çalışma ya da çocuk odasıyla esnek yaşam.',en:'Flexible living with an extra study or kids\' room.'},
+  {type:'4+1',size:'184 m²',stock:'32 adet',tr:'Geniş aileler için cömert ve konforlu alanlar.',en:'Generous, comfortable space for larger families.'},
+  {type:'Dubleks',size:'232 m²',stock:'4 adet',tr:'İki katlı, özel teraslı en seçkin yaşam tarzı.',en:'Two-storey living with a private terrace.'}
 ];
 
 const LIFE = [
@@ -978,9 +1182,7 @@ const LIFE = [
 ];
 
 const TABS = ['ulasim','saglik','egitim','avm','yasam'];
-
 const HL_IMGS = ['koru.webp','millet_bahcesi.png','marina.webp'];
-
 const APT_IMGS = {
   '2+1':'daire_2-1.jpg',
   '3+1':'daire_3-1.jpg',
@@ -1026,10 +1228,12 @@ function setLang(newLang) {
   renderHlCards(true);
   renderApartments(true);
   renderArch();
+  renderVaziyet();
   renderLocTabs();
   renderLocItems();
   renderPoetry();
   renderLifeGallery(true);
+  renderPrices();
   renderFooterLinks();
   if (!submitted) renderForm();
 }
@@ -1110,6 +1314,7 @@ function renderApartments(instant = false) {
     <div class="apt-card" data-reveal>
       <div class="apt-img lb-trigger" onclick="openAptLightbox(${i})">
         <img src="project/uploads/${APT_IMGS[a.type]}" alt="${esc(a.type)}" loading="lazy">
+        <span class="apt-stock">${esc(a.stock)}</span>
       </div>
       <div class="apt-body">
         <div class="apt-type-row">
@@ -1124,6 +1329,16 @@ function renderApartments(instant = false) {
     </div>`).join('');
   if (instant) el.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('visible'));
   else observeAll(el.querySelectorAll('[data-reveal]'));
+}
+
+function renderVaziyet() {
+  setText('vaziyet-eyebrow', t('vaziyet.eyebrow'));
+  setText('vaziyet-title', t('vaziyet.title'));
+  setText('vaziyet-area-num', t('vaziyet.area'));
+  setText('vaziyet-area-label', t('vaziyet.areaLabel'));
+  document.getElementById('vaziyet-features').innerHTML =
+    t('vaziyet.features').map(f => `
+      <li><i class="ph-light ${f.icon}"></i>${esc(f.text)}</li>`).join('');
 }
 
 function renderLocTabs() {
@@ -1181,6 +1396,33 @@ function renderPoetry() {
   setText('poetry-label', t('poetry.label'));
   document.getElementById('poetry-lines').innerHTML =
     t('poetry.lines').map(l => `<li>${esc(l)}</li>`).join('');
+}
+
+function renderPrices() {
+  setText('prices-eyebrow', t('prices.eyebrow'));
+  setText('prices-title', t('prices.title'));
+  setText('prices-sub', t('prices.sub'));
+  setText('prices-note', t('prices.note'));
+  const grid = document.getElementById('prices-grid');
+  if (grid) {
+    grid.innerHTML = t('prices.items').map(p => `
+      <div class="price-card">
+        <span class="price-type">${esc(p.type)}</span>
+        <span class="price-amount">${esc(p.amount)}</span>
+        <span class="price-sqm">${esc(p.sqm)}</span>
+      </div>`).join('');
+  }
+  const pay = document.getElementById('prices-payment');
+  if (pay) {
+    pay.innerHTML = t('prices.payment').map(p => `
+      <div class="payment-badge">
+        <i class="ph-light ${p.icon}"></i>
+        <div class="payment-badge-text">
+          <span class="payment-badge-val">${esc(p.val)}</span>
+          <span class="payment-badge-label">${esc(p.label)}</span>
+        </div>
+      </div>`).join('');
+  }
 }
 
 function renderFooterLinks() {
@@ -1382,6 +1624,13 @@ function openAptLightbox(index) {
   })), index);
 }
 
+function openVaziyetLightbox() {
+  openLightbox([{
+    src: 'project/uploads/vaziyet_plani.png',
+    caption: lang === 'tr' ? 'Vaziyet Planı' : 'Site Plan'
+  }], 0);
+}
+
 document.addEventListener('keydown', e => {
   if (!document.getElementById('lightbox').classList.contains('open')) return;
   if (e.key === 'Escape') closeLightbox();
@@ -1398,11 +1647,13 @@ function init() {
   renderHeroTicker();
   renderHlCards();
   renderApartments();
+  renderVaziyet();
   renderArch();
   renderLocTabs();
   renderLocItems();
   renderPoetry();
   renderLifeGallery();
+  renderPrices();
   renderFooterLinks();
   renderForm();
   initReveal();
